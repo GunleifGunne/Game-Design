@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] List<Transform> houses;
     [SerializeField] float timeBetweenSpawns = 10;
     [SerializeField] float timeBeforeFirstEnemy = 2;
+    public List<GameObject> enemies;
 
     Vector3 spawnPosition, targetPosition;
     Vector3 enemySpriteOffset, houseSpriteOffset;
@@ -78,7 +79,7 @@ public class EnemySpawner : MonoBehaviour {
     private void SpawnEnemy()
     {
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
+        enemies.Add(Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity));   
     }
 
     private void SetUpSpawnBoundaries()
