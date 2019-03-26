@@ -92,5 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679d9aee7021f2044afeb6612b609e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
-  scaleSizeTime: 5
+  movementSpeed: 5
+  scaleSizeTime: 1
+  timeBetweenAttacks: 2
+  projectileSpeed: 1
+  projectilePrefab: {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3,
+    type: 3}

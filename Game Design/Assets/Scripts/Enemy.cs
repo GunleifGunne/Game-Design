@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 1f;
+    [SerializeField] float movementSpeed = 5f;
     [SerializeField] float scaleSizeTime = 5;
+    [SerializeField] float timeBetweenAttacks = 2;
+    [SerializeField] float projectileSpeed = 1;
+    [SerializeField] GameObject projectilePrefab;
 
     float movementThisFrame;
-    float timer;
+    float scaleFactor = 1;
 
     EnemySpawner enemySpawner;
+    GameObject projectile;
 
     Vector3 targetPosition;
-
-    int scaleFactor = 1;
+    
+    bool grow = true;
+    bool callScaleRoutine = true;
 
     // Start is called before the first frame update
     void Start()
@@ -39,17 +44,36 @@ public class Enemy : MonoBehaviour
 
     private void ScaleSize()
     {
-        if(transform.position == targetPosition)
+        if(transform.position == targetPosition && callScaleRoutine)
         {
-            if(transform.localScale != new Vector3(3, 3, 1))
+            callScaleRoutine = false;
+            StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
+        }
+    }
+
+    IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
+    {
+        while(grow == true)
+        {
+            yield return new WaitForSeconds(scaleSizeTime);
+
+            transform.localScale += new Vector3(scaleFactor, scaleFactor);
+
+            if(transform.localScale == new Vector3(scaleFactor * 3, scaleFactor * 3, 1f))
             {
-                timer += Time.deltaTime;
-                if(timer >= scaleSizeTime)
-                {
-                    transform.localScale += new Vector3(scaleFactor, scaleFactor, 0);
-                    timer = 0f;
-                }
+                grow = false;
+                StartCoroutine(ShootParticle(timeBetweenAttacks));
             }
+        }
+    }
+
+    IEnumerator ShootParticle(float timeBetweenAttacks)
+    {
+        while (true)
+        {
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
+            yield return new WaitForSeconds(timeBetweenAttacks);
         }
     }
 }

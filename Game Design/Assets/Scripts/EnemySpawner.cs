@@ -10,12 +10,12 @@ public class EnemySpawner : MonoBehaviour {
 
     Vector3 spawnPosition, targetPosition;
     Vector3 enemySpriteOffset, houseSpriteOffset;
-
     Camera gameCamera;
 
     Sprite enemySprite, houseSprite;
 
     float xMin, xMax, yMin, yMax;
+
     float enemySpriteWidthBounds, houseSpriteWidthBounds;
 
     private void Start()
@@ -37,7 +37,6 @@ public class EnemySpawner : MonoBehaviour {
     public Vector3 GetTargetPosition()
     {
         int houseIndex = Random.Range(0, houses.Count);
-
         if(spawnPosition.x >= xMin && spawnPosition.x < (xMax / 2))
         {
             targetPosition = houses[houseIndex].transform.position - (enemySpriteOffset + houseSpriteOffset);
@@ -53,6 +52,7 @@ public class EnemySpawner : MonoBehaviour {
     public Vector3 GetSpawnPosition()
     {
         int spawnPointEdge;
+
         spawnPointEdge = Random.Range(0, 4);
 
         if (spawnPointEdge == 0)
@@ -88,5 +88,10 @@ public class EnemySpawner : MonoBehaviour {
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+    }
+
+    public float GetTimeBeforeFirstSpawn()
+    {
+        return timeBeforeFirstEnemy;
     }
 }
