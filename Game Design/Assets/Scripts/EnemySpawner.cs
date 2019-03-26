@@ -78,7 +78,7 @@ public class EnemySpawner : MonoBehaviour {
     private void SpawnEnemy()
     {
         int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.Euler(0f, 0f, 90f));
+        Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
     }
 
     private void SetUpSpawnBoundaries()
