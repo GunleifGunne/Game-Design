@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 90f)) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
             yield return new WaitForSeconds(timeBetweenAttacks);
         }
