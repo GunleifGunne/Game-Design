@@ -10,7 +10,6 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         building = transform.parent.gameObject;
-        Debug.Log(building);
         SetBorderSize();
 	}
 
