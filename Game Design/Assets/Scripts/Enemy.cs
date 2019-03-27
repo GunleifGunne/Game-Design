@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 
     float movementThisFrame;
     float scaleFactor = 1;
+    float spawnToTargetDif;
 
     EnemySpawner enemySpawner;
     GameObject projectile;
@@ -19,27 +20,58 @@ public class Enemy : MonoBehaviour
 
     Vector3 initialTargetPosition, targetPosition;
     Vector3 originalSize, currentRotation;
-    
+
     bool grow = true;
     bool callScaleRoutine = true;
+    bool flipMe = false;
 
     // Start is called before the first frame update
     void Start()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
-        initialTargetPosition = enemySpawner.GetTargetPosition();
         targetPositionHolder = FindObjectOfType<TargetPositionHolder>();
+
+        initialTargetPosition = enemySpawner.GetTargetPosition();
+        originalSize = transform.localScale;
+        spawnToTargetDif = transform.position.x - targetPosition.x;
+
         FindTargetPosition();
 
-        originalSize = transform.localScale;
-        //targetPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        if (spawnToTargetDif > 0)
+        {
+            transform.Rotate(0f, 180f, 0f);
+        }
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        FlipAtTarget();
         ScaleSize();
+    }
+
+    private void FlipAtTarget()
+    {
+        if (targetPosition == transform.position && flipMe == false)
+        {
+            if (spawnToTargetDif > 0 && (enemySpawner.GetHousePosition().x - transform.position.x) > 0)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                flipMe = true;
+            }
+            else if (spawnToTargetDif < 0 && (enemySpawner.GetHousePosition().x - transform.position.x) < 0)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                flipMe = true;
+            }
+            else
+            {
+                flipMe = true;
+            }
+        }
     }
 
     private void Move()

@@ -16,6 +16,8 @@ public class EnemySpawner : MonoBehaviour {
 
     float xMin, xMax, yMin, yMax;
 
+    int globalHouseIndex;
+
     float enemySpriteWidthBounds, houseSpriteWidthBounds;
 
     private void Start()
@@ -37,6 +39,8 @@ public class EnemySpawner : MonoBehaviour {
     public Vector3 GetTargetPosition()
     {
         int houseIndex = Random.Range(0, houses.Count);
+        globalHouseIndex = houseIndex;
+
         if(spawnPosition.x >= xMin && spawnPosition.x < (xMax / 2))
         {
             targetPosition = houses[houseIndex].transform.position - (enemySpriteOffset + houseSpriteOffset);
@@ -93,5 +97,10 @@ public class EnemySpawner : MonoBehaviour {
     public float GetTimeBeforeFirstSpawn()
     {
         return timeBeforeFirstEnemy;
+    }
+
+    public Vector3 GetHousePosition()
+    {
+        return houses[globalHouseIndex].transform.position;
     }
 }
