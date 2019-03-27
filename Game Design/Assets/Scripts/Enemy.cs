@@ -15,8 +15,10 @@ public class Enemy : MonoBehaviour
 
     EnemySpawner enemySpawner;
     GameObject projectile;
+    TargetPositionHolder targetPositionHolder;
 
-    Vector3 targetPosition;
+    Vector3 initialTargetPosition, targetPosition;
+    Vector3 originalSize, currentRotation;
     
     bool grow = true;
     bool callScaleRoutine = true;
@@ -25,7 +27,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
-        targetPosition = enemySpawner.GetTargetPosition();
+        initialTargetPosition = enemySpawner.GetTargetPosition();
+        targetPositionHolder = FindObjectOfType<TargetPositionHolder>();
+        FindTargetPosition();
+
+        originalSize = transform.localScale;
         //targetPosition = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
@@ -57,9 +63,9 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(scaleSizeTime);
 
-            transform.localScale += new Vector3(scaleFactor, scaleFactor);
+            transform.localScale += new Vector3(originalSize.x, originalSize.y);
 
-            if(transform.localScale == new Vector3(scaleFactor * 3, scaleFactor * 3, 1f))
+            if(transform.localScale == new Vector3(originalSize.x * 3, originalSize.y * 3, 1f))
             {
                 grow = false;
                 StartCoroutine(ShootParticle(timeBetweenAttacks));
@@ -74,6 +80,20 @@ public class Enemy : MonoBehaviour
             projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 90f)) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
             yield return new WaitForSeconds(timeBetweenAttacks);
+        }
+    }
+
+    private void FindTargetPosition()
+    {
+        if(!targetPositionHolder.occupiedTargetPositions.Contains(initialTargetPosition))
+        {
+            targetPositionHolder.AddToList(initialTargetPosition);
+            targetPosition = initialTargetPosition;
+        }
+        else
+        {
+            initialTargetPosition = enemySpawner.GetTargetPosition();
+            FindTargetPosition();
         }
     }
 }
