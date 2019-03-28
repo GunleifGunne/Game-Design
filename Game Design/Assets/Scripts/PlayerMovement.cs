@@ -11,11 +11,13 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
+    float p1xTranslation;
 
     public GameObject shot;
     public Transform p1ShotSpawn;
     public Transform p2ShotSpawn;
     public float fireRate;
+    float p1yTranslation;
 
     private bool usingAxis;
 
@@ -49,15 +51,13 @@ public class PlayerMovement : MonoBehaviour {
         //}
 
         // Get the horizontal and vertical axis of both players.
-        float p1xTranslation = Input.GetAxis("P1Horizontal") * speed;
-        float p1yTranslation = Input.GetAxis("P1Vertical") * speed;
+        p1xTranslation = Input.GetAxis("P1Horizontal") * speed;
+        p1yTranslation = Input.GetAxis("P1Vertical") * speed;
 
         
 
         float p2xTranslation = Input.GetAxis("P2Horizontal") * speed;
         float p2yTranslation = Input.GetAxis("P2Vertical") * speed;
-
-        float rotation = Input.GetAxis("P1Horizontal") * rotationSpeed;
 
 
         // Make it move 10 meters per second instead of 10 meters per frame...
@@ -72,9 +72,7 @@ public class PlayerMovement : MonoBehaviour {
         //player1.transform.Translate(Mathf.Clamp(player1.transform.position.x + p1xTranslation, xMin, xMax), 0, 0);
         //player2.transform.Translate(p2xTranslation, 0, 0);
 
-        float newX1Pos = Mathf.Clamp(player1.transform.position.x + p1xTranslation, xMin, xMax);
-        float newY1Pos = Mathf.Clamp(player1.transform.position.y + p1yTranslation, yMin, yMax);
-        player1.transform.position = new Vector2(newX1Pos, newY1Pos);
+        
 
         float newX2Pos = Mathf.Clamp(player2.transform.position.x + p2xTranslation, xMin, xMax);
         float newY2Pos = Mathf.Clamp(player2.transform.position.y + p2yTranslation, yMin, yMax);
@@ -96,5 +94,12 @@ public class PlayerMovement : MonoBehaviour {
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+    }
+
+    private void MovePlayer1()
+    {
+        float newX1Pos = Mathf.Clamp(player1.transform.position.x + p1xTranslation, xMin, xMax);
+        float newY1Pos = Mathf.Clamp(player1.transform.position.y + p1yTranslation, yMin, yMax);
+        player1.transform.position = new Vector2(newX1Pos, newY1Pos);
     }
 }

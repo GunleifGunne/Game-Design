@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
     [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] List<Transform> houses;
+    [Header("Spawn Settings")]
     [SerializeField] float timeBetweenSpawns = 10;
     [SerializeField] float timeBeforeFirstEnemy = 2;
 
@@ -102,5 +103,10 @@ public class EnemySpawner : MonoBehaviour {
     public Vector3 GetHousePosition()
     {
         return houses[globalHouseIndex].transform.position;
+    }
+
+    public void RemoveFromHousesList(Transform transform)
+    {
+        houses.Remove(transform);
     }
 }

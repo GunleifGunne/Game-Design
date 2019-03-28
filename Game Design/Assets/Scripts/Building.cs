@@ -10,12 +10,15 @@ public class Building : MonoBehaviour
 
     HealthBar healthBar;
     Sprite houseSprite;
+    EnemySpawner enemySpawner;
 
     private float houseSpriteHeight;
     private float currentHealth;
 
     private void Start()
     {
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+
         houseSprite = GetComponent<SpriteRenderer>().sprite;
         houseSpriteHeight = houseSprite.bounds.size.y / 2;
 
@@ -39,6 +42,11 @@ public class Building : MonoBehaviour
     {
         currentHealth -= damage.GetDamage();
         damage.Hit();
+        if(currentHealth <= 0)
+        {
+            enemySpawner.RemoveFromHousesList(gameObject.transform);
+            Destroy(gameObject);
+        }
     }
 
     public float GetHealthPercentage()

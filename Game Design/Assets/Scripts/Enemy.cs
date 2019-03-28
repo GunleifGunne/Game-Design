@@ -5,14 +5,19 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
+
+    [Header("Scale Settings")]
     [SerializeField] float scaleSizeTime = 5;
+    [SerializeField] float scaleFactor = 1;
+
+    [Header("Projectile Settings")]
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] float timeBetweenAttacks = 2;
     [SerializeField] float projectileSpeed = 1;
-    [SerializeField] GameObject projectilePrefab;
 
     float movementThisFrame;
-    float scaleFactor = 1;
     float spawnToTargetDif;
+    float projectileAngle;
 
     EnemySpawner enemySpawner;
     GameObject projectile;
@@ -34,6 +39,7 @@ public class Enemy : MonoBehaviour
         initialTargetPosition = enemySpawner.GetTargetPosition();
         originalSize = transform.localScale;
         spawnToTargetDif = transform.position.x - targetPosition.x;
+        projectileAngle = 90f;
 
         FindTargetPosition();
 
@@ -42,7 +48,11 @@ public class Enemy : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
         }
 
-        
+        if(enemySpawner.GetHousePosition().x - targetPosition.x < 0)
+        {
+            projectileSpeed *= -1;
+            projectileAngle = -90f;
+        }
     }
 
     // Update is called once per frame
@@ -95,9 +105,9 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(scaleSizeTime);
 
-            transform.localScale += new Vector3(originalSize.x, originalSize.y);
+            transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
 
-            if(transform.localScale == new Vector3(originalSize.x * 3, originalSize.y * 3, 1f))
+            if(transform.localScale == new Vector3(originalSize.x * scaleFactor * 3, originalSize.y * scaleFactor * 3, 1f))
             {
                 grow = false;
                 StartCoroutine(ShootParticle(timeBetweenAttacks));
@@ -109,9 +119,9 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, 90f)) as GameObject;
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
             yield return new WaitForSeconds(timeBetweenAttacks);
+            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, projectileAngle)) as GameObject;
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
         }
     }
 
