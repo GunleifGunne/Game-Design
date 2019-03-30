@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float moveSpeed = 10.0f;
     [SerializeField] string horizontalCTRL = "P1Horizontal";
     [SerializeField] string verticalCTRL = "P1Vertical";
-    [SerializeField] string shootCTRL = "P1Fire";
 
     private float xMin, xMax, yMin, yMax;
     private bool facingRight = true;
@@ -35,26 +34,26 @@ public class PlayerController : MonoBehaviour {
 
     private void Move()
     {
-        float deltaX = Input.GetAxis(horizontalCTRL) * Time.deltaTime * moveSpeed;
-        float deltaY = Input.GetAxis(verticalCTRL) * Time.deltaTime * moveSpeed;
+        float moveX = Input.GetAxis(horizontalCTRL) * Time.deltaTime * moveSpeed;
+        float moveY = Input.GetAxis(verticalCTRL) * Time.deltaTime * moveSpeed;
 
-        float newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        float newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
+        if (moveX > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (moveX < 0 && facingRight)
+        {
+            Flip();
+        }
+
+        float newXPos = Mathf.Clamp(transform.position.x + moveX, xMin, xMax);
+        float newYPos = Mathf.Clamp(transform.position.y + moveY, yMin, yMax);
         transform.position = new Vector2(newXPos, newYPos);
-
-        if (deltaX > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if(deltaX < 0 && facingRight)
-        {
-            Flip();
-        }
     }
 
     private void Flip()
     {
-        facingRight = false;
+        facingRight = !facingRight;
 
         transform.Rotate(0f, 180f, 0f);
     }

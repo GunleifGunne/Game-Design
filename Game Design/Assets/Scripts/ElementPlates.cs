@@ -28,18 +28,22 @@ public class ElementPlates : MonoBehaviour
             if (other.gameObject.name == "Fire Element")
             {
                 current.sprite = fireIcon;
+                gameObject.tag = "Fire";
             }
             else if (other.gameObject.name == "Water Element")
             {
                 current.sprite = waterIcon;
+                gameObject.tag = "Water";
             }
             else if (other.gameObject.name == "Ice Element")
             {
                 current.sprite = iceIcon;
+                gameObject.tag = "Ice";
             }
             else if (other.gameObject.name == "Earth Element")
             {
                 current.sprite = earthIcon;
+                gameObject.tag = "Earth";
             }
         }
     }

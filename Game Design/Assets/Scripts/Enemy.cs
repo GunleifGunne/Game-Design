@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
+    [SerializeField] string typeOfEnemy;
+    [SerializeField] int points = 200;
 
     [Header("Scale Settings")]
     [SerializeField] float scaleSizeTime = 5;
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
     EnemySpawner enemySpawner;
     GameObject projectile;
     TargetPositionHolder targetPositionHolder;
+    ScoreManager scoreManager;
 
     Vector3 initialTargetPosition, targetPosition;
     Vector3 originalSize, currentRotation;
@@ -35,6 +38,7 @@ public class Enemy : MonoBehaviour
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         targetPositionHolder = FindObjectOfType<TargetPositionHolder>();
+        scoreManager = FindObjectOfType<ScoreManager>();
 
         initialTargetPosition = enemySpawner.GetTargetPosition();
         originalSize = transform.localScale;
@@ -106,6 +110,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(scaleSizeTime);
 
             transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
+            points -= 50;
 
             if(transform.localScale == new Vector3(originalSize.x * scaleFactor * 3, originalSize.y * scaleFactor * 3, 1f))
             {
@@ -137,5 +142,32 @@ public class Enemy : MonoBehaviour
             initialTargetPosition = enemySpawner.GetTargetPosition();
             FindTargetPosition();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(typeOfEnemy == "Earth Enemy" && other.tag == "Ice")
+        {
+            Die();
+        }
+        else if (typeOfEnemy == "Fire Enemy" && other.tag == "Water")
+        {
+            Die();
+        }
+        else if (typeOfEnemy == "Water Enemy" && other.tag == "Earth")
+        {
+            Die();
+        }
+        else if (typeOfEnemy == "Ice Enemy" && other.tag == "Fire")
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        targetPositionHolder.RemoveFromList(targetPosition);
+        scoreManager.AddToScore(points);
+        Destroy(gameObject);
     }
 }

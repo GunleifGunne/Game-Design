@@ -10,4 +10,9 @@ public class TargetPositionHolder : MonoBehaviour
     {
         occupiedTargetPositions.Add(position);
     }
+
+    public void RemoveFromList(Vector3 position)
+    {
+        occupiedTargetPositions.Remove(position);
+    }
 }
