@@ -8,6 +8,8 @@ TagManager:
   - Water
   - Ice
   - Earth
+  - Alive
+  - Destroyed
   layers:
   - Default
   - TransparentFX

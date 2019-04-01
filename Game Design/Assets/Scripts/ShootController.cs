@@ -24,22 +24,18 @@ public class ShootController : MonoBehaviour
             if(gameObject.tag == "Fire")
             {
                 projectile = Instantiate(projectilePrefabs[0], firePoint.position, firePoint.rotation);
-                Debug.Log(projectile.name);
             }
             else if(gameObject.tag == "Water")
             {
                 projectile = Instantiate(projectilePrefabs[1], firePoint.position, firePoint.rotation);
-                Debug.Log(projectile.name);
             }
             else if(gameObject.tag == "Ice")
             {
                 projectile = Instantiate(projectilePrefabs[2], firePoint.position, firePoint.rotation);
-                Debug.Log(projectile.name);
             }
             else if(gameObject.tag == "Earth")
             {
                 projectile = Instantiate(projectilePrefabs[3], firePoint.position, firePoint.rotation);
-                Debug.Log(projectile.name);
             }
 
             Destroy(projectile, 0.2f);

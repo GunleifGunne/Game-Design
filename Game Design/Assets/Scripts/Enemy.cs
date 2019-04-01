@@ -22,11 +22,11 @@ public class Enemy : MonoBehaviour
     float projectileAngle;
 
     EnemySpawner enemySpawner;
-    GameObject projectile;
+    GameObject projectile, targetHouse;
     TargetPositionHolder targetPositionHolder;
     ScoreManager scoreManager;
 
-    Vector3 initialTargetPosition, targetPosition;
+    Vector3 initialTargetPosition, targetPosition, housePosition;
     Vector3 originalSize, currentRotation;
 
     bool grow = true;
@@ -41,6 +41,8 @@ public class Enemy : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
 
         initialTargetPosition = enemySpawner.GetTargetPosition();
+        housePosition = enemySpawner.GetHousePosition();
+        targetHouse = enemySpawner.GetTargetHouse();
         originalSize = transform.localScale;
         spawnToTargetDif = transform.position.x - targetPosition.x;
         projectileAngle = 90f;
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
         }
 
-        if(enemySpawner.GetHousePosition().x - targetPosition.x < 0)
+        if(housePosition.x - targetPosition.x < 0)
         {
             projectileSpeed *= -1;
             projectileAngle = -90f;
@@ -65,18 +67,19 @@ public class Enemy : MonoBehaviour
         Move();
         FlipAtTarget();
         ScaleSize();
+        Remove();
     }
 
     private void FlipAtTarget()
     {
         if (targetPosition == transform.position && flipMe == false)
         {
-            if (spawnToTargetDif > 0 && (enemySpawner.GetHousePosition().x - transform.position.x) > 0)
+            if (spawnToTargetDif > 0 && (housePosition.x - transform.position.x) > 0)
             {
                 transform.Rotate(0f, 180f, 0f);
                 flipMe = true;
             }
-            else if (spawnToTargetDif < 0 && (enemySpawner.GetHousePosition().x - transform.position.x) < 0)
+            else if (spawnToTargetDif < 0 && (housePosition.x - transform.position.x) < 0)
             {
                 transform.Rotate(0f, 180f, 0f);
                 flipMe = true;
@@ -169,5 +172,14 @@ public class Enemy : MonoBehaviour
         targetPositionHolder.RemoveFromList(targetPosition);
         scoreManager.AddToScore(points);
         Destroy(gameObject);
+    }
+
+    private void Remove()
+    {
+        if (targetHouse.tag == "Destroyed")
+        {
+            targetPositionHolder.RemoveFromList(targetPosition);
+            Destroy(gameObject);
+        }
     }
 }

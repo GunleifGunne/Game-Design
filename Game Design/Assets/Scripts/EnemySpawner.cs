@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     [SerializeField] GameObject[] enemyPrefabs;
-    [SerializeField] List<Transform> houses;
+    [SerializeField] List<GameObject> houses;
     [Header("Spawn Settings")]
     [SerializeField] float timeBetweenSpawns = 10;
     [SerializeField] float timeBeforeFirstEnemy = 2;
@@ -95,18 +95,18 @@ public class EnemySpawner : MonoBehaviour {
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
-    public float GetTimeBeforeFirstSpawn()
-    {
-        return timeBeforeFirstEnemy;
-    }
-
     public Vector3 GetHousePosition()
     {
         return houses[globalHouseIndex].transform.position;
     }
 
-    public void RemoveFromHousesList(Transform transform)
+    public void RemoveFromHousesList(GameObject thisHouse)
     {
-        houses.Remove(transform);
+        houses.Remove(thisHouse);
+    }
+
+    public GameObject GetTargetHouse()
+    {
+        return houses[globalHouseIndex];
     }
 }

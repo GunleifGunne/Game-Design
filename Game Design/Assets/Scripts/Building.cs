@@ -44,9 +44,14 @@ public class Building : MonoBehaviour
         damage.Hit();
         if(currentHealth <= 0)
         {
-            enemySpawner.RemoveFromHousesList(gameObject.transform);
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        enemySpawner.RemoveFromHousesList(gameObject);
+        gameObject.tag = "Destroyed";
     }
 
     public float GetHealthPercentage()
