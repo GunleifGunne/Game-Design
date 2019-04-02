@@ -97,9 +97,9 @@ MonoBehaviour:
   movementSpeed: 5
   typeOfEnemy: Ice Enemy
   points: 200
-  scaleSizeTime: 10
+  scaleSizeTime: 2
   scaleFactor: 1
-  projectilePrefab: {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3,
+  projectilePrefab: {fileID: 1973797488871700, guid: 65282b3797b46b4469226a7c520f381d,
     type: 3}
   timeBetweenAttacks: 2
   projectileSpeed: 1

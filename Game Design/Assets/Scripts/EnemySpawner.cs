@@ -42,6 +42,7 @@ public class EnemySpawner : MonoBehaviour {
         int houseIndex = Random.Range(0, houses.Count);
         globalHouseIndex = houseIndex;
 
+        Debug.Log(globalHouseIndex);
         if(spawnPosition.x >= xMin && spawnPosition.x < (xMax / 2))
         {
             targetPosition = houses[houseIndex].transform.position - (enemySpriteOffset + houseSpriteOffset);

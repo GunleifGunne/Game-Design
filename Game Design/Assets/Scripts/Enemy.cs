@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
 
     float movementThisFrame;
     float spawnToTargetDif;
-    float projectileAngle;
 
     EnemySpawner enemySpawner;
     GameObject projectile, targetHouse;
@@ -45,7 +44,8 @@ public class Enemy : MonoBehaviour
         targetHouse = enemySpawner.GetTargetHouse();
         originalSize = transform.localScale;
         spawnToTargetDif = transform.position.x - targetPosition.x;
-        projectileAngle = 90f;
+
+        Debug.Log(targetHouse.name);
 
         FindTargetPosition();
 
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         if(housePosition.x - targetPosition.x < 0)
         {
             projectileSpeed *= -1;
-            projectileAngle = -90f;
+            projectilePrefab.transform.Rotate(0f, 180f, 0f);
         }
     }
 
@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(timeBetweenAttacks);
-            projectile = Instantiate(projectilePrefab, transform.position, Quaternion.Euler(0.0f, 0.0f, projectileAngle)) as GameObject;
+            projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
         }
     }

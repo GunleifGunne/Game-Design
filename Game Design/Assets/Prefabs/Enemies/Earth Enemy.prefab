@@ -97,9 +97,9 @@ MonoBehaviour:
   movementSpeed: 5
   typeOfEnemy: Earth Enemy
   points: 200
-  scaleSizeTime: 10
+  scaleSizeTime: 2
   scaleFactor: 1
-  projectilePrefab: {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3,
+  projectilePrefab: {fileID: 1973797488871700, guid: a5706eb2439524b498cf594d0ab846a6,
     type: 3}
   timeBetweenAttacks: 2
   projectileSpeed: 1
