@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AvailableTargets : MonoBehaviour
 {
+    public List<GameObject> availableTargets;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        availableTargets.AddRange(GameObject.FindGameObjectsWithTag("TargetPosition"));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveFromList(GameObject target)
     {
-        
+        availableTargets.Remove(target);
+    }
+
+    public GameObject GetTargetPosition(int index)
+    {
+        return availableTargets[index];
+    }
+
+    public void AddToList(GameObject target)
+    {
+        availableTargets.Add(target);
     }
 }

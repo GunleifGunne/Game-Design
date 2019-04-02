@@ -2,57 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
     [SerializeField] GameObject[] enemyPrefabs;
-    [SerializeField] List<GameObject> houses;
+
     [Header("Spawn Settings")]
     [SerializeField] float timeBetweenSpawns = 10;
     [SerializeField] float timeBeforeFirstEnemy = 2;
 
-    Vector3 spawnPosition, targetPosition;
-    Vector3 enemySpriteOffset, houseSpriteOffset;
+    Vector3 spawnPosition;
     Camera gameCamera;
 
-    Sprite enemySprite, houseSprite;
-
     float xMin, xMax, yMin, yMax;
-
-    int globalHouseIndex;
-
-    float enemySpriteWidthBounds, houseSpriteWidthBounds;
 
     private void Start()
     {
         SetUpSpawnBoundaries();
 
-        enemySprite = enemyPrefabs[0].GetComponentInChildren<SpriteRenderer>(true).sprite;
-        houseSprite = houses[0].GetComponentInChildren<SpriteRenderer>().sprite;
-
-        enemySpriteWidthBounds = enemySprite.bounds.size.x / 2;
-        houseSpriteWidthBounds = houseSprite.bounds.size.x / 2;
-
-        enemySpriteOffset = new Vector3(enemySpriteWidthBounds, 0.0f, 0.0f);
-        houseSpriteOffset = new Vector3(houseSpriteWidthBounds, 0.0f, 0.0f);
-
         InvokeRepeating("SpawnEnemy", timeBeforeFirstEnemy, timeBetweenSpawns);
-    }
-
-    public Vector3 GetTargetPosition()
-    {
-        int houseIndex = Random.Range(0, houses.Count);
-        globalHouseIndex = houseIndex;
-
-        Debug.Log(globalHouseIndex);
-        if(spawnPosition.x >= xMin && spawnPosition.x < (xMax / 2))
-        {
-            targetPosition = houses[houseIndex].transform.position - (enemySpriteOffset + houseSpriteOffset);
-        }
-        else if (spawnPosition.x >= (xMax / 2) && spawnPosition.x <= xMax)
-        {
-            targetPosition = houses[houseIndex].transform.position + (enemySpriteOffset + houseSpriteOffset);
-        }
-        
-        return targetPosition;
     }
 
     public Vector3 GetSpawnPosition()
@@ -96,18 +63,4 @@ public class EnemySpawner : MonoBehaviour {
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
-    public Vector3 GetHousePosition()
-    {
-        return houses[globalHouseIndex].transform.position;
-    }
-
-    public void RemoveFromHousesList(GameObject thisHouse)
-    {
-        houses.Remove(thisHouse);
-    }
-
-    public GameObject GetTargetHouse()
-    {
-        return houses[globalHouseIndex];
-    }
 }

@@ -20,13 +20,14 @@ public class Enemy : MonoBehaviour
     float movementThisFrame;
     float spawnToTargetDif;
 
-    EnemySpawner enemySpawner;
-    GameObject projectile, targetHouse;
-    TargetPositionHolder targetPositionHolder;
+    int target;
+    
+    GameObject projectile, targetPositionObject, targetHouse;
     ScoreManager scoreManager;
+    AvailableTargets availableTargets;
 
-    Vector3 initialTargetPosition, targetPosition, housePosition;
-    Vector3 originalSize, currentRotation;
+    Vector3 targetPosition, targetHousePos;
+    Vector3 originalSize;
 
     bool grow = true;
     bool callScaleRoutine = true;
@@ -35,26 +36,26 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemySpawner = FindObjectOfType<EnemySpawner>();
-        targetPositionHolder = FindObjectOfType<TargetPositionHolder>();
+        availableTargets = FindObjectOfType<AvailableTargets>();
         scoreManager = FindObjectOfType<ScoreManager>();
 
-        initialTargetPosition = enemySpawner.GetTargetPosition();
-        housePosition = enemySpawner.GetHousePosition();
-        targetHouse = enemySpawner.GetTargetHouse();
+        target = Random.Range(0, availableTargets.availableTargets.Count);
+        targetPositionObject = availableTargets.GetTargetPosition(target);
+        availableTargets.RemoveFromList(targetPositionObject);
+        targetHouse = targetPositionObject.transform.parent.gameObject;
+
+        targetPosition = targetPositionObject.transform.position;
+        targetHousePos = targetHouse.transform.position;
+
         originalSize = transform.localScale;
         spawnToTargetDif = transform.position.x - targetPosition.x;
-
-        Debug.Log(targetHouse.name);
-
-        FindTargetPosition();
 
         if (spawnToTargetDif > 0)
         {
             transform.Rotate(0f, 180f, 0f);
         }
 
-        if(housePosition.x - targetPosition.x < 0)
+        if (targetHousePos.x - targetPosition.x < 0)
         {
             projectileSpeed *= -1;
             projectilePrefab.transform.Rotate(0f, 180f, 0f);
@@ -74,12 +75,12 @@ public class Enemy : MonoBehaviour
     {
         if (targetPosition == transform.position && flipMe == false)
         {
-            if (spawnToTargetDif > 0 && (housePosition.x - transform.position.x) > 0)
+            if (spawnToTargetDif > 0 && (targetHousePos.x - transform.position.x) > 0)
             {
                 transform.Rotate(0f, 180f, 0f);
                 flipMe = true;
             }
-            else if (spawnToTargetDif < 0 && (housePosition.x - transform.position.x) < 0)
+            else if (spawnToTargetDif < 0 && (targetHousePos.x - transform.position.x) < 0)
             {
                 transform.Rotate(0f, 180f, 0f);
                 flipMe = true;
@@ -99,7 +100,7 @@ public class Enemy : MonoBehaviour
 
     private void ScaleSize()
     {
-        if(transform.position == targetPosition && callScaleRoutine)
+        if (transform.position == targetPosition && callScaleRoutine)
         {
             callScaleRoutine = false;
             StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
@@ -108,14 +109,14 @@ public class Enemy : MonoBehaviour
 
     IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
     {
-        while(grow == true)
+        while (grow == true)
         {
             yield return new WaitForSeconds(scaleSizeTime);
 
             transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
             points -= 50;
 
-            if(transform.localScale == new Vector3(originalSize.x * scaleFactor * 4, originalSize.y * scaleFactor * 4, 1f))
+            if (transform.localScale == new Vector3(originalSize.x * scaleFactor * 4, originalSize.y * scaleFactor * 4, 1f))
             {
                 grow = false;
                 StartCoroutine(ShootParticle(timeBetweenAttacks));
@@ -133,23 +134,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void FindTargetPosition()
-    {
-        if(!targetPositionHolder.occupiedTargetPositions.Contains(initialTargetPosition))
-        {
-            targetPositionHolder.AddToList(initialTargetPosition);
-            targetPosition = initialTargetPosition;
-        }
-        else
-        {
-            initialTargetPosition = enemySpawner.GetTargetPosition();
-            FindTargetPosition();
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(typeOfEnemy == "Earth Enemy" && other.tag == "Ice")
+        if (typeOfEnemy == "Earth Enemy" && other.tag == "Ice")
         {
             Die();
         }
@@ -169,7 +156,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        targetPositionHolder.RemoveFromList(targetPosition);
+        availableTargets.AddToList(targetPositionObject);
         scoreManager.AddToScore(points);
         Destroy(gameObject);
     }
@@ -178,7 +165,6 @@ public class Enemy : MonoBehaviour
     {
         if (targetHouse.tag == "Destroyed")
         {
-            targetPositionHolder.RemoveFromList(targetPosition);
             Destroy(gameObject);
         }
     }
