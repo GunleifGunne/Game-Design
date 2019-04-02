@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 212511831395615402}
   - component: {fileID: 3480889518519966442}
   - component: {fileID: 7097531000690183061}
-  - component: {fileID: 8619222752935107787}
+  - component: {fileID: 286878410173485171}
   m_Layer: 11
   m_Name: Enemy Projectile Fire
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1973797488871700}
   m_LocalRotation: {x: 0, y: -0.0000009616506, z: 0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
---- !u!60 &8619222752935107787
-PolygonCollider2D:
+--- !u!58 &286878410173485171
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,19 +130,5 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.09, y: 0.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.037910383, y: 0.21881554}
-      - {x: -0.047910385, y: 0.20881553}
-      - {x: -0.047910385, y: -0.05118446}
-      - {x: 0.042089615, y: -0.05118446}
-      - {x: 0.042089615, y: 0.21881554}
+  serializedVersion: 2
+  m_Radius: 0.11
