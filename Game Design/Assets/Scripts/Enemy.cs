@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
             transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
             points -= 50;
 
-            if(transform.localScale == new Vector3(originalSize.x * scaleFactor * 3, originalSize.y * scaleFactor * 3, 1f))
+            if(transform.localScale == new Vector3(originalSize.x * scaleFactor * 4, originalSize.y * scaleFactor * 4, 1f))
             {
                 grow = false;
                 StartCoroutine(ShootParticle(timeBetweenAttacks));

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3629208033951579324}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 8795084857334944020}
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   typeOfEnemy: Fire Enemy
   points: 200
   scaleSizeTime: 2
-  scaleFactor: 1
+  scaleFactor: 0.5
   projectilePrefab: {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3,
     type: 3}
   timeBetweenAttacks: 2
