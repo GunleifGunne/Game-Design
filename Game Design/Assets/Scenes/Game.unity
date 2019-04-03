@@ -1268,7 +1268,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee62a23b46e90e4dbb7f59c161a825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 130628081}
+  elementIcon: {fileID: 130628081}
+  elementSprites:
+  - {fileID: 21300000, guid: 2962067671cf44e419ed51a66dbca4a7, type: 3}
+  - {fileID: 21300000, guid: 3a96a30e1e4f1bd44a311874d8a9ddef, type: 3}
+  - {fileID: 21300000, guid: 556ec9fa4a0e201459038020305dd19e, type: 3}
+  - {fileID: 21300000, guid: 16ad72eb00a47ee4d9527a53dae3ce9c, type: 3}
+  - {fileID: 21300000, guid: 6e445f64c5ffdc14bb3f0e7e492d778e, type: 3}
 --- !u!50 &1968461525
 Rigidbody2D:
   serializedVersion: 4
@@ -2079,7 +2085,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee62a23b46e90e4dbb7f59c161a825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 1298483154}
+  elementIcon: {fileID: 1298483154}
+  elementSprites:
+  - {fileID: 21300000, guid: 2962067671cf44e419ed51a66dbca4a7, type: 3}
+  - {fileID: 21300000, guid: 3a96a30e1e4f1bd44a311874d8a9ddef, type: 3}
+  - {fileID: 21300000, guid: 556ec9fa4a0e201459038020305dd19e, type: 3}
+  - {fileID: 21300000, guid: 16ad72eb00a47ee4d9527a53dae3ce9c, type: 3}
+  - {fileID: 21300000, guid: 6e445f64c5ffdc14bb3f0e7e492d778e, type: 3}
 --- !u!50 &5671197304818461761
 Rigidbody2D:
   serializedVersion: 4
@@ -2453,6 +2465,11 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: enemyPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: bigBoyPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
@@ -2504,6 +2521,29 @@ PrefabInstance:
         type: 3}
       propertyPath: timeBeforeFirstEnemy
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: f00b6b35985a0c54b8fa3c02cd85684f,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: f52a51ffa4d43b544bc56c164ac5ddfc,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: bigBoyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: f52a51ffa4d43b544bc56c164ac5ddfc,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemiesBeforeBoss
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}

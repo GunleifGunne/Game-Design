@@ -7,7 +7,6 @@ public class ShootController : MonoBehaviour
     [SerializeField] Transform firePoint;
     [SerializeField] string shootCTRL = "P1Fire";
     [SerializeField] GameObject[] projectilePrefabs;
-    [SerializeField] float projectileSpeed = 5;
 
     GameObject projectile;
 

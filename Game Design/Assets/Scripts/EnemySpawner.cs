@@ -5,15 +5,19 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
+    [SerializeField] GameObject[] bigBoyPrefabs;
 
     [Header("Spawn Settings")]
     [SerializeField] float timeBetweenSpawns = 10;
     [SerializeField] float timeBeforeFirstEnemy = 2;
+    [SerializeField] int enemiesBeforeBoss = 10;
 
     Vector3 spawnPosition;
     Camera gameCamera;
 
     float xMin, xMax, yMin, yMax;
+
+    int enemyCounter = 1;
 
     private void Start()
     {
@@ -50,8 +54,23 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
-        Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
+        if(enemyCounter % (enemiesBeforeBoss + 1) != 0)
+        {
+            int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
+            enemyCounter++;
+        }
+        else
+        {
+            SpawnBigBoy();
+            enemyCounter++;
+        }
+    }
+
+    private void SpawnBigBoy()
+    {
+        int bigBoyIndex = Random.Range(0, bigBoyPrefabs.Length);
+        Instantiate(bigBoyPrefabs[bigBoyIndex], GetSpawnPosition(), Quaternion.identity);
     }
 
     private void SetUpSpawnBoundaries()

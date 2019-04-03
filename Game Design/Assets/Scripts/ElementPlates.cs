@@ -4,47 +4,41 @@ using UnityEngine;
 
 public class ElementPlates : MonoBehaviour
 {
-    [SerializeField] GameObject icon;
+    [SerializeField] GameObject elementIcon;
+    [SerializeField] Sprite[] elementSprites;
     private SpriteRenderer current;
-    private Sprite waterIcon, fireIcon, earthIcon, iceIcon, noIcon;
 
     private void Start()
     {
-        current = icon.GetComponent<SpriteRenderer>();
-
-        noIcon = Resources.Load<Sprite>("No Element");
-        waterIcon = Resources.Load<Sprite>("Water Element");
-        fireIcon = Resources.Load<Sprite>("Fire Element");
-        earthIcon = Resources.Load<Sprite>("Earth Element");
-        iceIcon = Resources.Load<Sprite>("Ice Element");
-
-        current.sprite = noIcon;
+        current = elementIcon.GetComponent<SpriteRenderer>();
+        current.sprite = elementSprites[0];
+        //current.color = Color.black;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Input.GetKeyDown("space"))
-        {
+        //if (Input.GetKeyDown("space"))
+        //{
             if (other.gameObject.name == "Fire Element")
             {
-                current.sprite = fireIcon;
+                current.sprite = elementSprites[2];
                 gameObject.tag = "Fire";
             }
             else if (other.gameObject.name == "Water Element")
             {
-                current.sprite = waterIcon;
+                current.sprite = elementSprites[4];
                 gameObject.tag = "Water";
             }
             else if (other.gameObject.name == "Ice Element")
             {
-                current.sprite = iceIcon;
+                current.sprite = elementSprites[3];
                 gameObject.tag = "Ice";
             }
             else if (other.gameObject.name == "Earth Element")
             {
-                current.sprite = earthIcon;
+                current.sprite = elementSprites[1];
                 gameObject.tag = "Earth";
             }
-        }
+        //}
     }
 }

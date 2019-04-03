@@ -15,10 +15,11 @@ public class HealthBar : MonoBehaviour {
 
     private void Update()
     {
-        if(building.GetComponent<Building>().GetHealthPercentage() >= 0)
+        SetSize(building.GetComponent<Building>().GetHealthPercentage());
+        if(building.GetComponent<Building>().GetHealthPercentage() < 0)
         {
-            SetSize(building.GetComponent<Building>().GetHealthPercentage());
-        }  
+            SetSize(0);
+        }
     }
 
     public void SetSize(float sizeNormalized)

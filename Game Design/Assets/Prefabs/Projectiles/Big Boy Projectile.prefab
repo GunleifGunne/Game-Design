@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 212511831395615402}
   - component: {fileID: 3480889518519966442}
   - component: {fileID: 7097531000690183061}
-  - component: {fileID: 286878410173485171}
+  - component: {fileID: 352244429452062711}
   m_Layer: 11
-  m_Name: Enemy Projectile Fire
+  m_Name: Big Boy Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973797488871700}
-  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000010053619}
+  m_LocalRotation: {x: -0, y: -1, z: 0, w: 0.0000011802073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1937554411
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c635163a24f603b4da8d4db534abe867, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b50f5e1a86dfb347ada4152e4c4f72b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122e91be1a79f604b873eaa81e27076a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
---- !u!58 &286878410173485171
+  damage: 20
+--- !u!58 &352244429452062711
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,6 +129,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.01, y: 0.01}
   serializedVersion: 2
-  m_Radius: 0.11
+  m_Radius: 0.1

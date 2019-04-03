@@ -7,6 +7,7 @@ public class Building : MonoBehaviour
     [SerializeField] Transform healthBarPrefab;
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
+    [SerializeField] Sprite destroyedSprite;
 
     HealthBar healthBar;
     Sprite houseSprite;
@@ -48,6 +49,7 @@ public class Building : MonoBehaviour
     private void Die()
     {
         gameObject.tag = "Destroyed";
+        GetComponent<SpriteRenderer>().sprite = destroyedSprite;
     }
 
     public float GetHealthPercentage()

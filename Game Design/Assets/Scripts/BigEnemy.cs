@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class BigEnemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
-    [SerializeField] string isKilledBy;
+    [SerializeField] string isKilledBy1;
+    [SerializeField] string isKilledBy2;
     [SerializeField] int points = 200;
-
-    [Header("Scale Settings")]
-    [SerializeField] float scaleSizeTime = 5;
-    [SerializeField] float scaleFactor = 1;
 
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
@@ -19,20 +16,19 @@ public class Enemy : MonoBehaviour
 
     float movementThisFrame;
     float spawnToTargetDif;
-    float maxSizeX, maxSizeY;
 
     int target;
-    
+
     GameObject projectile, targetPositionObject, targetHouse;
     ScoreManager scoreManager;
     AvailableTargets availableTargets;
 
     Vector3 targetPosition, targetHousePos;
-    Vector3 originalSize;
 
-    bool grow = true;
-    bool callScaleRoutine = true;
     bool flipMe = false;
+    bool isShooting = false;
+    bool hasCollidedWithObj1 = false;
+    bool hasCollidedWithObj2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +43,6 @@ public class Enemy : MonoBehaviour
 
         targetPosition = targetPositionObject.transform.position;
         targetHousePos = targetHouse.transform.position;
-
-        originalSize = transform.localScale;
-        maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
-        maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
 
         spawnToTargetDif = transform.position.x - targetPosition.x;
 
@@ -71,7 +63,11 @@ public class Enemy : MonoBehaviour
     {
         Move();
         FlipAtTarget();
-        ScaleSize();
+        if(targetPosition == transform.position && isShooting == false)
+        {
+            isShooting = true;
+            StartCoroutine(ShootParticle(timeBetweenAttacks));
+        }
         Remove();
     }
 
@@ -102,32 +98,6 @@ public class Enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
     }
 
-    private void ScaleSize()
-    {
-        if (transform.position == targetPosition && callScaleRoutine)
-        {
-            callScaleRoutine = false;
-            StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
-        }
-    }
-
-    IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
-    {
-        while (grow == true)
-        {
-            yield return new WaitForSeconds(scaleSizeTime);
-
-            transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
-            points -= 50;
-
-            if (transform.localScale == new Vector3(maxSizeX, maxSizeY, 1f))
-            {
-                grow = false;
-                StartCoroutine(ShootParticle(timeBetweenAttacks));
-            }
-        }
-    }
-
     IEnumerator ShootParticle(float timeBetweenAttacks)
     {
         while (true)
@@ -140,10 +110,47 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == isKilledBy)
+        if (other.tag == isKilledBy1)
         {
-            Die();
+            hasCollidedWithObj1 = true;
+            StartCoroutine(CheckCollision1());
         }
+        else if (other.tag == isKilledBy2)
+        {
+            hasCollidedWithObj2 = true;
+            StartCoroutine(CheckCollision2());
+        }
+            
+        if (hasCollidedWithObj1 && hasCollidedWithObj2)
+        {
+            Destroy(gameObject);
+        }
+
+        //if (other.tag == isKilledBy1)
+        //{
+        //    hasCollidedWithObj1 = true;
+        //}
+        //else if (other.tag == isKilledBy2)
+        //{
+        //    hasCollidedWithObj2 = true;
+        //}
+
+        //if (hasCollidedWithObj1 && hasCollidedWithObj2)
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
+
+    IEnumerator CheckCollision1()
+    {
+        yield return new WaitForSeconds(1);
+        hasCollidedWithObj1 = false;
+    }
+
+    IEnumerator CheckCollision2()
+    {
+        yield return new WaitForSeconds(1);
+        hasCollidedWithObj2 = false;
     }
 
     private void Die()

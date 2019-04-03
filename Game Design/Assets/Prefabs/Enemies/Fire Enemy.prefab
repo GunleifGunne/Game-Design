@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  typeOfEnemy: Fire Enemy
+  isKilledBy: Water
   points: 200
   scaleSizeTime: 2
   scaleFactor: 0.5
@@ -144,11 +144,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6569057098031663412}
     m_Modifications:
-    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-        type: 3}
-      propertyPath: m_Name
-      value: ElementIcon
-      objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -203,6 +198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Name
+      value: ElementIcon
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217827, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
