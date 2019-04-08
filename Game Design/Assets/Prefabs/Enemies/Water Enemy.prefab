@@ -91,14 +91,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3629208033951579324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679d9aee7021f2044afeb6612b609e4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d62f80eb4ffae4c4f834112f38db9b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  isKilledBy: Earth
+  icon: {fileID: 3814555848404841751}
   points: 200
-  scaleSizeTime: 2
-  scaleFactor: 0.5
+  scaleSizeTime: 5
+  scaleFactor: 1
   projectilePrefab: {fileID: 1973797488871700, guid: 21bcde0cb52b03c428feb518ee46fea8,
     type: 3}
   timeBetweenAttacks: 2
@@ -210,6 +210,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
+--- !u!1 &3814555848404841751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 947874746242980214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3814555848404841748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,

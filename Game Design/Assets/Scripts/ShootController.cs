@@ -20,19 +20,19 @@ public class ShootController : MonoBehaviour
     {
         if (Input.GetButtonDown(shootCTRL))
         {
-            if(gameObject.tag == "Fire")
+            if(gameObject.tag == "Fire Element")
             {
                 projectile = Instantiate(projectilePrefabs[0], firePoint.position, firePoint.rotation);
             }
-            else if(gameObject.tag == "Water")
+            else if(gameObject.tag == "Water Element")
             {
                 projectile = Instantiate(projectilePrefabs[1], firePoint.position, firePoint.rotation);
             }
-            else if(gameObject.tag == "Ice")
+            else if(gameObject.tag == "Ice Element")
             {
                 projectile = Instantiate(projectilePrefabs[2], firePoint.position, firePoint.rotation);
             }
-            else if(gameObject.tag == "Earth")
+            else if(gameObject.tag == "Earth Element")
             {
                 projectile = Instantiate(projectilePrefabs[3], firePoint.position, firePoint.rotation);
             }

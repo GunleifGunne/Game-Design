@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3233739957766162166}
   m_Layer: 10
   m_Name: Player Projectile Water
-  m_TagString: Water
+  m_TagString: Water Element
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

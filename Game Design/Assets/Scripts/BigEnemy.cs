@@ -5,8 +5,6 @@ using UnityEngine;
 public class BigEnemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
-    [SerializeField] string isKilledBy1;
-    [SerializeField] string isKilledBy2;
     [SerializeField] int points = 200;
 
     [Header("Projectile Settings")]
@@ -14,10 +12,22 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] float timeBetweenAttacks = 2;
     [SerializeField] float projectileSpeed = 1;
 
+    [SerializeField] GameObject icon1;
+    [SerializeField] GameObject icon2;
+    [SerializeField] Sprite[] elementSprites1;
+    [SerializeField] List<Sprite> elementSprites2;
+
     float movementThisFrame;
     float spawnToTargetDif;
 
     int target;
+
+    string isKilledBy1, isKilledBy2;
+
+    bool flipMe = false;
+    bool isShooting = false;
+    bool hasCollidedWithObj1 = false;
+    bool hasCollidedWithObj2 = false;
 
     GameObject projectile, targetPositionObject, targetHouse;
     ScoreManager scoreManager;
@@ -25,17 +35,44 @@ public class BigEnemy : MonoBehaviour
 
     Vector3 targetPosition, targetHousePos;
 
-    bool flipMe = false;
-    bool isShooting = false;
-    bool hasCollidedWithObj1 = false;
-    bool hasCollidedWithObj2 = false;
-
     // Start is called before the first frame update
     void Start()
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreManager = FindObjectOfType<ScoreManager>();
 
+        AssignIcons();
+        AssignTarget();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        FlipAtTarget();
+
+        if(targetPosition == transform.position && isShooting == false)
+        {
+            isShooting = true;
+            StartCoroutine(ShootParticle(timeBetweenAttacks));
+        }
+
+        Remove();
+    }
+
+    private void AssignIcons()
+    {
+        int icon1SpriteIndex = Random.Range(0, 4);
+        int icon2SpriteIndex = Random.Range(0, 3);
+        icon1.GetComponent<SpriteRenderer>().sprite = elementSprites1[icon1SpriteIndex];
+        isKilledBy1 = elementSprites1[icon1SpriteIndex].name;
+        elementSprites2.RemoveAt(icon1SpriteIndex);
+        icon2.GetComponent<SpriteRenderer>().sprite = elementSprites2[icon2SpriteIndex];
+        isKilledBy2 = elementSprites2[icon2SpriteIndex].name;
+    }
+
+    private void AssignTarget()
+    {
         target = Random.Range(0, availableTargets.availableTargets.Count);
         targetPositionObject = availableTargets.GetTargetPosition(target);
         availableTargets.RemoveFromList(targetPositionObject);
@@ -56,19 +93,6 @@ public class BigEnemy : MonoBehaviour
             projectileSpeed *= -1;
             projectilePrefab.transform.Rotate(0f, 180f, 0f);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Move();
-        FlipAtTarget();
-        if(targetPosition == transform.position && isShooting == false)
-        {
-            isShooting = true;
-            StartCoroutine(ShootParticle(timeBetweenAttacks));
-        }
-        Remove();
     }
 
     private void FlipAtTarget()

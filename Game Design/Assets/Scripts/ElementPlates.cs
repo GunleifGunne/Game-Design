@@ -22,22 +22,22 @@ public class ElementPlates : MonoBehaviour
             if (other.gameObject.name == "Fire Element")
             {
                 current.sprite = elementSprites[2];
-                gameObject.tag = "Fire";
+                gameObject.tag = other.gameObject.name;
             }
             else if (other.gameObject.name == "Water Element")
             {
                 current.sprite = elementSprites[4];
-                gameObject.tag = "Water";
+                gameObject.tag = other.gameObject.name;
             }
             else if (other.gameObject.name == "Ice Element")
             {
                 current.sprite = elementSprites[3];
-                gameObject.tag = "Ice";
+                gameObject.tag = other.gameObject.name;
             }
             else if (other.gameObject.name == "Earth Element")
             {
                 current.sprite = elementSprites[1];
-                gameObject.tag = "Earth";
+                gameObject.tag = other.gameObject.name;
             }
         //}
     }

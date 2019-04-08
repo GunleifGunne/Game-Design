@@ -4,12 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Water
-  - Ice
-  - Earth
   - Alive
   - Destroyed
+  - TargetPosition
+  - Earth Element
+  - Ice Element
+  - Fire Element
+  - Water Element
+  - Fire
+  - Ice
+  - Water
   layers:
   - Default
   - TransparentFX

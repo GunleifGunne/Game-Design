@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
-    [SerializeField] string isKilledBy;
+    [SerializeField] GameObject icon;
     [SerializeField] int points = 200;
 
     [Header("Scale Settings")]
@@ -22,7 +22,9 @@ public class Enemy : MonoBehaviour
     float maxSizeX, maxSizeY;
 
     int target;
-    
+
+    string isKilledBy;
+
     GameObject projectile, targetPositionObject, targetHouse;
     ScoreManager scoreManager;
     AvailableTargets availableTargets;
@@ -40,6 +42,26 @@ public class Enemy : MonoBehaviour
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreManager = FindObjectOfType<ScoreManager>();
 
+        isKilledBy = icon.GetComponent<SpriteRenderer>().sprite.name;
+
+        AssignTarget();
+
+        originalSize = transform.localScale;
+        maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
+        maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Move();
+        FlipAtTarget();
+        ScaleSize();
+        Remove();
+    }
+
+    private void AssignTarget()
+    {
         target = Random.Range(0, availableTargets.availableTargets.Count);
         targetPositionObject = availableTargets.GetTargetPosition(target);
         availableTargets.RemoveFromList(targetPositionObject);
@@ -47,11 +69,6 @@ public class Enemy : MonoBehaviour
 
         targetPosition = targetPositionObject.transform.position;
         targetHousePos = targetHouse.transform.position;
-
-        originalSize = transform.localScale;
-        maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
-        maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
-
         spawnToTargetDif = transform.position.x - targetPosition.x;
 
         if (spawnToTargetDif > 0)
@@ -64,15 +81,6 @@ public class Enemy : MonoBehaviour
             projectileSpeed *= -1;
             projectilePrefab.transform.Rotate(0f, 180f, 0f);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Move();
-        FlipAtTarget();
-        ScaleSize();
-        Remove();
     }
 
     private void FlipAtTarget()

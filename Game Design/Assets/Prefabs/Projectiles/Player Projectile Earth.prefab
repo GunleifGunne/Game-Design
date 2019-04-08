@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3453748374670545831}
   m_Layer: 10
   m_Name: Player Projectile Earth
-  m_TagString: Earth
+  m_TagString: Earth Element
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

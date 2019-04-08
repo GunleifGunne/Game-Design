@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1903904120689508745}
   m_Layer: 10
   m_Name: Player Projectile Ice
-  m_TagString: Ice
+  m_TagString: Ice Element
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
