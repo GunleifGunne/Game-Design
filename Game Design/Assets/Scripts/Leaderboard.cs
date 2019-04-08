@@ -150,5 +150,3 @@ public class Leaderboard : MonoBehaviour
         }
     }
 }
-
-// Next up: Get the score from the actual game. Player can only press once. Sort it by highest number. Ask if they want to be consistent between game sessions.
