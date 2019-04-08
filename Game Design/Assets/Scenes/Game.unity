@@ -277,6 +277,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5671197304818461757}
     m_Modifications:
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Name
+      value: ElementIcon
+      objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -331,11 +336,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-        type: 3}
-      propertyPath: m_Name
-      value: ElementIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
@@ -1330,7 +1330,6 @@ MonoBehaviour:
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
   - {fileID: 1973797488871700, guid: de4bd42b1935e824c91478ea2efa5986, type: 3}
   - {fileID: 1973797488871700, guid: 4e465c2fb9df4174ea6dcd27166ef703, type: 3}
-  projectileSpeed: 5
 --- !u!4 &1979765373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6493784619901252398, guid: cef5f7d19493bc14cbae3d1efc395403,
@@ -1790,6 +1789,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1968461522}
     m_Modifications:
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Name
+      value: ElementIcon
+      objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1844,11 +1848,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-        type: 3}
-      propertyPath: m_Name
-      value: ElementIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
@@ -2147,7 +2146,6 @@ MonoBehaviour:
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
   - {fileID: 1973797488871700, guid: de4bd42b1935e824c91478ea2efa5986, type: 3}
   - {fileID: 1973797488871700, guid: 4e465c2fb9df4174ea6dcd27166ef703, type: 3}
-  projectileSpeed: 5
 --- !u!1001 &6493784619599208787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2515,12 +2513,12 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: timeBetweenSpawns
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: timeBeforeFirstEnemy
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
@@ -2543,7 +2541,7 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: enemiesBeforeBoss
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}

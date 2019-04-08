@@ -97,11 +97,11 @@ MonoBehaviour:
   movementSpeed: 5
   icon: {fileID: 4260597193497584967}
   points: 200
-  scaleSizeTime: 5
-  scaleFactor: 1
+  scaleSizeTime: 2
+  scaleFactor: 0.3
   projectilePrefab: {fileID: 1973797488871700, guid: a5706eb2439524b498cf594d0ab846a6,
     type: 3}
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 3
   projectileSpeed: 1
 --- !u!61 &5480769560591489302
 BoxCollider2D:
@@ -136,6 +136,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6569057098031663412}
     m_Modifications:
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Name
+      value: ElementIcon
+      objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -190,11 +195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-        type: 3}
-      propertyPath: m_Name
-      value: ElementIcon
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217827, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
