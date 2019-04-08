@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Building : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class Building : MonoBehaviour
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
     [SerializeField] Sprite destroyedSprite;
+    [SerializeField] int lives = 2;
 
     HealthBar healthBar;
     Sprite houseSprite;
+    GameOver gameOver;
 
     private float houseSpriteHeight;
     private float currentHealth;
+
 
     private void Start()
     {
@@ -27,7 +31,10 @@ public class Building : MonoBehaviour
         healthBar = healthBarTransform.GetComponent<HealthBar>();
 
         currentHealth = health;
+
+        gameOver = FindObjectOfType<GameOver>();
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -43,6 +50,11 @@ public class Building : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
+
+            if (GameObject.FindGameObjectsWithTag("Destroyed").Length >= lives)
+            {
+                gameOver.EndGame();
+            }
         }
     }
 

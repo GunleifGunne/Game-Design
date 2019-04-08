@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5480769560591489302}
   m_Layer: 9
   m_Name: Earth Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,17 +91,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3629208033951579324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62f80eb4ffae4c4f834112f38db9b0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 679d9aee7021f2044afeb6612b609e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  icon: {fileID: 4260597193497584967}
+  isKilledBy: Ice
   points: 200
   scaleSizeTime: 2
-  scaleFactor: 0.3
+  scaleFactor: 0.5
   projectilePrefab: {fileID: 1973797488871700, guid: a5706eb2439524b498cf594d0ab846a6,
     type: 3}
-  timeBetweenAttacks: 3
+  timeBetweenAttacks: 2
   projectileSpeed: 1
 --- !u!61 &5480769560591489302
 BoxCollider2D:
@@ -204,12 +204,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
---- !u!1 &4260597193497584967 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 213692047056193830}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4260597193497584964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,

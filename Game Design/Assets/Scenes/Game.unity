@@ -1090,6 +1090,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5303549717235232779, guid: 9204434af9fbc444083c1e6cbfda964a,
+        type: 3}
+      propertyPath: lives
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9204434af9fbc444083c1e6cbfda964a, type: 3}
 --- !u!4 &1471995721 stripped
@@ -1188,6 +1193,49 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 974289622}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1735752762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1735752763}
+  - component: {fileID: 1735752764}
+  m_Layer: 0
+  m_Name: GameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1735752763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735752762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1068.685, y: 180.51788, z: 1.6597617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735752764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735752762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283f949bd8ff0814aa241018ab2bcd9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1796556548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,7 +2288,7 @@ PrefabInstance:
     - target: {fileID: 7032617306382617819, guid: 229d4c9a77e079046868994ce912ebfd,
         type: 3}
       propertyPath: m_Name
-      value: Score Manager
+      value: Score Update
       objectReference: {fileID: 0}
     - target: {fileID: 7032617306382617818, guid: 229d4c9a77e079046868994ce912ebfd,
         type: 3}
@@ -2513,12 +2561,12 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: timeBetweenSpawns
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: timeBeforeFirstEnemy
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
@@ -2541,8 +2589,20 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: enemiesBeforeBoss
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3098571791190686665, guid: e055f2f60c947e046a28031c3dc9bb96,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8522072929314850960, guid: b2ff140b5dc42094583c6d9b0b5b1bf3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}
 --- !u!1001 &9123785069141824889

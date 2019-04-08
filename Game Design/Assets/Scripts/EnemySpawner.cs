@@ -54,7 +54,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if(enemyCounter % (enemiesBeforeBoss + 1) != 0)
+        
+        if (enemyCounter % (enemiesBeforeBoss + 1) != 0)
         {
             int enemyIndex = Random.Range(0, enemyPrefabs.Length);
             Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
@@ -65,6 +66,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnBigBoy();
             enemyCounter++;
         }
+
     }
 
     private void SpawnBigBoy()

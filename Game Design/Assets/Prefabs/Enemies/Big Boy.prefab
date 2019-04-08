@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3290182491457383660}
   m_Layer: 9
   m_Name: Big Boy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 647848319
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ee10a5b6136d90e4b96e3f1dfc7b05ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d444a6f7a991cd43a736d1f34c37577, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,23 +128,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0.5
+  isKilledBy1: Fire
+  isKilledBy2: Ice
   points: 500
   projectilePrefab: {fileID: 1973797488871700, guid: 79a5c415159f99c4a932b96a5d59c691,
     type: 3}
-  timeBetweenAttacks: 3
+  timeBetweenAttacks: 2
   projectileSpeed: 1
-  icon1: {fileID: 3814555848404841751}
-  icon2: {fileID: 8876620314095722600}
-  elementSprites1:
-  - {fileID: 21300000, guid: 3a96a30e1e4f1bd44a311874d8a9ddef, type: 3}
-  - {fileID: 21300000, guid: 556ec9fa4a0e201459038020305dd19e, type: 3}
-  - {fileID: 21300000, guid: 16ad72eb00a47ee4d9527a53dae3ce9c, type: 3}
-  - {fileID: 21300000, guid: 6e445f64c5ffdc14bb3f0e7e492d778e, type: 3}
-  elementSprites2:
-  - {fileID: 21300000, guid: 3a96a30e1e4f1bd44a311874d8a9ddef, type: 3}
-  - {fileID: 21300000, guid: 556ec9fa4a0e201459038020305dd19e, type: 3}
-  - {fileID: 21300000, guid: 16ad72eb00a47ee4d9527a53dae3ce9c, type: 3}
-  - {fileID: 21300000, guid: 6e445f64c5ffdc14bb3f0e7e492d778e, type: 3}
 --- !u!1001 &947874746242980214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,20 +206,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167942204598217827, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+      objectReference: {fileID: 21300000, guid: 556ec9fa4a0e201459038020305dd19e,
         type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
---- !u!1 &3814555848404841751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 947874746242980214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3814555848404841748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
@@ -307,20 +287,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167942204598217827, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+      objectReference: {fileID: 21300000, guid: 16ad72eb00a47ee4d9527a53dae3ce9c,
         type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1d781a18e62f04f8d02cf6de4412b7, type: 3}
---- !u!1 &8876620314095722600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 4820987398443650057}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8876620314095722603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
