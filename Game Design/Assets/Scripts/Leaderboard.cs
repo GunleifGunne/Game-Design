@@ -31,17 +31,25 @@ public class Leaderboard : MonoBehaviour
         highscoreArraySession = new List<PlayerInfo>();
         LoadLeaderboard();
         
-        if(ScoreManager.Score <= highscoreArraySession[highscoreArraySession.Count - 1].score &&
-            highscoreArraySession.Count == 5)
+        if(highscoreArraySession.Count > 0)
         {
-            teamNameInput.gameObject.SetActive(false);
-            submitBtn.gameObject.SetActive(false);
+            if (ScoreManager.Score <= highscoreArraySession[highscoreArraySession.Count - 1].score &&
+                highscoreArraySession.Count == 5)
+            {
+                teamNameInput.gameObject.SetActive(false);
+                submitBtn.gameObject.SetActive(false);
+            }
+            else
+            {
+                submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text); });
+            }
         }
         else
         {
             submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text); });
         }
-       
+
+
     }
 
     private void Update()
