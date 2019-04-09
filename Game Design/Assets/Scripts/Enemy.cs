@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     bool callScaleRoutine = true;
     bool flipMe = false;
 
-    AudioSource elementalShoot;
+    AudioSource elementalShoot, elementalDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
 
         elementalShoot = GameObject.Find("Sound").GetComponent<BGMusic>().elementalShoot;
+        elementalDeath = GameObject.Find("Sound").GetComponent<BGMusic>().elementalDeath;
     }
 
     // Update is called once per frame
@@ -164,6 +165,7 @@ public class Enemy : MonoBehaviour
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
         Destroy(gameObject);
+        elementalDeath.Play();
     }
 
     private void Remove()
