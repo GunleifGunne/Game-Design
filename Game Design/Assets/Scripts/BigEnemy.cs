@@ -30,7 +30,7 @@ public class BigEnemy : MonoBehaviour
     bool hasCollidedWithObj2 = false;
 
     GameObject projectile, targetPositionObject, targetHouse;
-    ScoreManager scoreManager;
+    ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
 
     Vector3 targetPosition, targetHousePos;
@@ -39,7 +39,7 @@ public class BigEnemy : MonoBehaviour
     void Start()
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreUpdate = FindObjectOfType<ScoreUpdate>();
 
         AssignIcons();
         AssignTarget();
@@ -180,7 +180,7 @@ public class BigEnemy : MonoBehaviour
     private void Die()
     {
         availableTargets.AddToList(targetPositionObject);
-        scoreManager.AddToScore(points);
+        ScoreManager.AddToScore(points);
         Destroy(gameObject);
     }
 

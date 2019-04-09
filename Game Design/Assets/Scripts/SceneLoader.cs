@@ -20,6 +20,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void Restart()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();

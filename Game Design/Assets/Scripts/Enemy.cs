@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     string isKilledBy;
 
     GameObject projectile, targetPositionObject, targetHouse;
-    ScoreManager scoreManager;
+    ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
 
     Vector3 targetPosition, targetHousePos;
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreUpdate = FindObjectOfType<ScoreUpdate>();
 
         isKilledBy = icon.GetComponent<SpriteRenderer>().sprite.name;
 
@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         availableTargets.AddToList(targetPositionObject);
-        scoreManager.AddToScore(points);
+        ScoreManager.AddToScore(points);
         Destroy(gameObject);
     }
 

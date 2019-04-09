@@ -7,11 +7,13 @@ public class Building : MonoBehaviour
     [SerializeField] Transform healthBarPrefab;
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
+    [SerializeField] int lives = 2;
     [SerializeField] Sprite destroyedSprite;
     private AudioSource DestroySound;
 
     HealthBar healthBar;
     Sprite houseSprite;
+    SceneLoader sceneLoader = new SceneLoader();
 
     private float houseSpriteHeight;
     private float currentHealth;
@@ -44,9 +46,14 @@ public class Building : MonoBehaviour
     {
         currentHealth -= damage.GetDamage();
         damage.Hit();
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
+
+            if (GameObject.FindGameObjectsWithTag("Destroyed").Length >= lives)
+            {
+                sceneLoader.LoadGameOverScene();
+            }
         }
     }
 
