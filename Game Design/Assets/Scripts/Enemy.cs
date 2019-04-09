@@ -163,31 +163,34 @@ public class Enemy : MonoBehaviour
     {
         availableTargets.AddToList(targetPositionObject);
         scoreManager.AddToScore(points);
-        Destroy(gameObject);
         sortElemental();
+        Destroy(gameObject);
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().increaseDifficulty();
+   
     }
 
     private void Remove()
     {
         if (targetHouse.tag == "Destroyed")
         {
+            sortElemental();
             Destroy(gameObject);
         }
     }
 
     //When an enemy dies it removes itself from its type's list.
     private void sortElemental(){
-        if(this.GetComponent<SpriteRenderer>().sprite.name == "Ice Enemy"){
+        if(this.GetComponent<SpriteRenderer>().sprite.name == "Earth Enemy"){
           GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el1.RemoveAt(0);
         }
-        if(this.GetComponent<SpriteRenderer>().sprite.name == "Earth Enemy"){
-        GetComponent<EnemySpawner>().el2.RemoveAt(0);
-        }
         if(this.GetComponent<SpriteRenderer>().sprite.name == "Fire Enemy"){
-        GetComponent<EnemySpawner>().el3.RemoveAt(0);
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el2.RemoveAt(0);
+        }
+        if(this.GetComponent<SpriteRenderer>().sprite.name == "Ice Enemy"){
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el3.RemoveAt(0);
         }
         if(this.GetComponent<SpriteRenderer>().sprite.name == "Water Enemy"){
-          GetComponent<EnemySpawner>().el4.RemoveAt(0);
+          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el4.RemoveAt(0);
         }
     }
 }

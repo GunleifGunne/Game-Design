@@ -1370,6 +1370,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3905068094613433359, guid: e17d2c8b12999be4a845db13b30dff3d,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905068094613433359, guid: e17d2c8b12999be4a845db13b30dff3d,
+        type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17d2c8b12999be4a845db13b30dff3d, type: 3}
 --- !u!4 &974289623 stripped
@@ -3099,8 +3109,8 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
-      propertyPath: enemiesBeforeBoss
-      value: 5
+      propertyPath: maxDifficulty
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}

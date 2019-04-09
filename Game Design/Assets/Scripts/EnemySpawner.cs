@@ -10,7 +10,10 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Settings")]
     [SerializeField] int enemiesBeforeBoss = 10;
     [SerializeField] float currentDifficulty = 0;
-    [SerializeField] float maxDifficulty = 10;
+
+//DifficultyMod % 0.25f should always = 0.
+     [SerializeField] float  difficultyMod = 0.25f;
+    public float maxDifficulty = 3.0f;
     [SerializeField] float spawnTime = 2.0f;
 
     Vector3 spawnPosition;
@@ -97,10 +100,13 @@ public class EnemySpawner : MonoBehaviour
         if(spawnTime - timer <= 0){
         SpawnEnemy();
         timer = 0; 
-        spawnTime = Random.Range(0,10);
+        spawnTime = Random.Range(0,8);
+        if(waveControl()){
+        
+        }
         }
     }
-
+    //Determine current difficulty of game
     private float determineDifficulty(){
         currentDifficulty = 0;
 
@@ -135,4 +141,15 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+//Gives breathing room every now and then
+    private bool waveControl(){
+        if(currentDifficulty >= maxDifficulty){
+        return true;
+        }
+        else return false;
+    }
+
+    public void increaseDifficulty(){
+        maxDifficulty += difficultyMod;
+    }
 }
