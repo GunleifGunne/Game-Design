@@ -8,9 +8,8 @@ public class BGMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Music.Play();
         Music.loop = true;
-        
+        Music.playOnAwake = true;
     }
 
     // Update is called once per frame
