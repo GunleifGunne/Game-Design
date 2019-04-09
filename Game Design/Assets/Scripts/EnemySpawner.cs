@@ -8,14 +8,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] bigBoyPrefabs;
 
     [Header("Spawn Settings")]
-    [SerializeField] float timeBetweenSpawns = 10;
-    [SerializeField] float timeBeforeFirstEnemy = 2;
     [SerializeField] int enemiesBeforeBoss = 10;
+    [SerializeField] float difficulty = 5;
+    [SerializeField] float spawnTime = 2.0f;
 
     Vector3 spawnPosition;
     Camera gameCamera;
 
-    float xMin, xMax, yMin, yMax;
+    float xMin, xMax, yMin, yMax, timer;
 
     int enemyCounter = 1;
 
@@ -23,7 +23,11 @@ public class EnemySpawner : MonoBehaviour
     {
         SetUpSpawnBoundaries();
 
-        InvokeRepeating("SpawnEnemy", timeBeforeFirstEnemy, timeBetweenSpawns);
+    }
+
+    private void Update(){
+      timer += Time.deltaTime;
+      determineSpawn();
     }
 
     public Vector3 GetSpawnPosition()
@@ -80,6 +84,14 @@ public class EnemySpawner : MonoBehaviour
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
+    }
+
+    private void determineSpawn(){
+        if(spawnTime - timer <= 0){
+        SpawnEnemy();
+        timer = 0;
+        spawnTime = Random.Range(enemyCounter,10);
+        }
     }
 
 }
