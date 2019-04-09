@@ -8,6 +8,7 @@ public class Building : MonoBehaviour
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
     [SerializeField] int lives = 2;
+    [SerializeField] GameObject life;
     [SerializeField] Sprite destroyedSprite;
     private AudioSource DestroySound;
 
@@ -62,6 +63,7 @@ public class Building : MonoBehaviour
         gameObject.tag = "Destroyed";
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
         DestroySound.Play();
+        Destroy(life);
     }
 
     public float GetHealthPercentage()
