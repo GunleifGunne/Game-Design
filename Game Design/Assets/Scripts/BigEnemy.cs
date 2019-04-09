@@ -147,7 +147,7 @@ public class BigEnemy : MonoBehaviour
             
         if (hasCollidedWithObj1 && hasCollidedWithObj2)
         {
-            Destroy(gameObject);
+            Die();
         }
 
         //if (other.tag == isKilledBy1)
