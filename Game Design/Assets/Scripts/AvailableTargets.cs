@@ -15,6 +15,8 @@ public class AvailableTargets : MonoBehaviour
     public void RemoveFromList(GameObject target)
     {
         availableTargets.Remove(target);
+
+
     }
 
     public GameObject GetTargetPosition(int index)

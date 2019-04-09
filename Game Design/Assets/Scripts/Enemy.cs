@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     bool callScaleRoutine = true;
     bool flipMe = false;
 
+    AudioSource elementalShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class Enemy : MonoBehaviour
         originalSize = transform.localScale;
         maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
         maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
+
+        elementalShoot = GameObject.Find("Sound").GetComponent<BGMusic>().elementalShoot;
     }
 
     // Update is called once per frame
@@ -143,6 +147,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenAttacks);
             projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
+            elementalShoot.Play();
         }
     }
 

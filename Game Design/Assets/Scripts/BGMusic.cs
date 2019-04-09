@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BGMusic : MonoBehaviour
 {
-    public AudioSource Music;
+    public AudioSource BMusic, houseDestroyed, heroShoot, elementalShoot;
     // Start is called before the first frame update
     void Start()
     {
-        Music.Play();
-        Music.loop = true;
+        BMusic.Play();
+        BMusic.loop = true;
         
     }
 
