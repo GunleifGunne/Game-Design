@@ -8,7 +8,6 @@ public class Building : MonoBehaviour
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
     [SerializeField] Sprite destroyedSprite;
-    private AudioSource DestroySound;
 
     HealthBar healthBar;
     Sprite houseSprite;
@@ -28,9 +27,6 @@ public class Building : MonoBehaviour
         healthBar = healthBarTransform.GetComponent<HealthBar>();
 
         currentHealth = health;
-
-        DestroySound = GameObject.Find("Sound").GetComponent<BGMusic>().houseDestroyed;
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -54,7 +50,6 @@ public class Building : MonoBehaviour
     {
         gameObject.tag = "Destroyed";
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
-        DestroySound.Play();
     }
 
     public float GetHealthPercentage()
