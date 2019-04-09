@@ -75,9 +75,12 @@ public class PlayerAnimation : MonoBehaviour
         }
 
         //Stop player animation when there is no movement
-        if (Input.anyKey == false)
+        if (!p1Up && !p1Down && !p1Left && !p1Right)
         {
             p1Animation.Play("Player1Idle");
+        }
+        if (!p2Up && !p2Down && !p2Left && !p2Right)
+        {
             p2Animation.Play("Player2Idle");
         }
     }
