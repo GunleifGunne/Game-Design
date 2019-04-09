@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         transform.position = new Vector2(newXPos, newYPos);
     }
 
-    private void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
 

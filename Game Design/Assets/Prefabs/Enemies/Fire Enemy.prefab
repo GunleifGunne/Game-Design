@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 803836158273067518}
   - component: {fileID: 4592699353861594488}
   - component: {fileID: 6142748150370367898}
+  - component: {fileID: 3552611371372460623}
   m_Layer: 9
   m_Name: Fire Enemy
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 647848319
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 103addf7e1d0a254797c39ecc5e08498, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cec813d41b59f2246b7c333636b65e25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,6 +138,25 @@ PolygonCollider2D:
       - {x: 0.5, y: -0.375}
       - {x: 0.49564973, y: 0.023379274}
       - {x: 0.125, y: 0.5}
+--- !u!95 &3552611371372460623
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629208033951579324}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64e02438aead57a458fb30a46b3acccc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4889196492955499894
 PrefabInstance:
   m_ObjectHideFlags: 0

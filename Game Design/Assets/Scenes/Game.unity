@@ -236,7 +236,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: de9948c5ec8d7464b9780cf3eca2da4f,
+      objectReference: {fileID: 21300000, guid: d5759735ec11ff740982498a4ece5c82,
         type: 3}
     - target: {fileID: 6543864184073344712, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
@@ -1877,6 +1877,38 @@ MonoBehaviour:
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
   - {fileID: 1973797488871700, guid: de4bd42b1935e824c91478ea2efa5986, type: 3}
   - {fileID: 1973797488871700, guid: 4e465c2fb9df4174ea6dcd27166ef703, type: 3}
+--- !u!95 &1968461528
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968461520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c69eaf4c99d06ed48a377ff873fa64cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1968461529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968461520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4ddc3216eca6f47999cddb70d30e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1968461520}
 --- !u!4 &1979765373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6493784619901252398, guid: cef5f7d19493bc14cbae3d1efc395403,
@@ -2674,6 +2706,25 @@ MonoBehaviour:
   moveSpeed: 2.5
   horizontalCTRL: P2Horizontal
   verticalCTRL: P2Vertical
+--- !u!95 &5671197304818461763
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671197304818461756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d302dc7c72254d7479b702991df76cf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5671197304818461764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2693,6 +2744,19 @@ MonoBehaviour:
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
   - {fileID: 1973797488871700, guid: de4bd42b1935e824c91478ea2efa5986, type: 3}
   - {fileID: 1973797488871700, guid: 4e465c2fb9df4174ea6dcd27166ef703, type: 3}
+--- !u!114 &5671197304818461765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671197304818461756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4ddc3216eca6f47999cddb70d30e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5671197304818461756}
 --- !u!1001 &6493784619599208787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2849,8 +2913,7 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 2108627029}
-    m_RemovedComponents:
-    - {fileID: 7032617306382617817, guid: 229d4c9a77e079046868994ce912ebfd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229d4c9a77e079046868994ce912ebfd, type: 3}
 --- !u!1001 &8128407655934269830
 PrefabInstance:
@@ -3179,7 +3242,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2ec7b2f1cb514a0409163f5e7fb626ca,
+      objectReference: {fileID: 21300000, guid: 593451790c3b31442be48d77f0166f78,
         type: 3}
     - target: {fileID: 6591950061949757728, guid: e3109cabddb4e634184011447585982e,
         type: 3}
