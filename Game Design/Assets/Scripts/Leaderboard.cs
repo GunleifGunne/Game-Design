@@ -6,7 +6,7 @@ using TMPro;
 
 public class Leaderboard : MonoBehaviour
 {
-    public InputField teamNameInput;
+    public TMP_InputField teamNameInput;
     public TextMeshProUGUI leaderboardDisplay;
     public TextMeshProUGUI scoreText;
     public Button submitBtn;
@@ -59,7 +59,7 @@ public class Leaderboard : MonoBehaviour
 
     void DisplayScore()
     {
-        scoreText.text = "Your teams score:        " + ScoreManager.Score;
+        scoreText.text = "Your team's score:        " + ScoreManager.Score;
     }
 
     void SaveScore(string score, string teamName)
