@@ -9,7 +9,8 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Settings")]
     [SerializeField] int enemiesBeforeBoss = 10;
-    [SerializeField] float difficulty = 5;
+    [SerializeField] float currentDifficulty = 0;
+    [SerializeField] float maxDifficulty = 10;
     [SerializeField] float spawnTime = 2.0f;
 
     Vector3 spawnPosition;
@@ -19,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
 
     int enemyCounter = 1;
 
+    public List <int> el1, el2, el3, el4;
+
     private void Start()
     {
         SetUpSpawnBoundaries();
@@ -27,7 +30,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update(){
       timer += Time.deltaTime;
+      if(maxDifficulty > determineDifficulty()){
       determineSpawn();
+      }
+     Debug.Log(maxDifficulty);
     }
 
     public Vector3 GetSpawnPosition()
@@ -61,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
         if(enemyCounter % (enemiesBeforeBoss + 1) != 0)
         {
             int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            sortElemental(enemyIndex);
             Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
             enemyCounter++;
         }
@@ -89,8 +96,42 @@ public class EnemySpawner : MonoBehaviour
     private void determineSpawn(){
         if(spawnTime - timer <= 0){
         SpawnEnemy();
-        timer = 0;
-        spawnTime = Random.Range(enemyCounter,10);
+        timer = 0; 
+        spawnTime = Random.Range(0,10);
+        }
+    }
+
+    private float determineDifficulty(){
+        currentDifficulty = 0;
+
+        for(int i = 0; i < el1.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el2.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el3.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el4.Count; i++){
+            currentDifficulty++;
+        }
+        return currentDifficulty;
+    }
+
+    //Adds spawned enemy to a list with other enemies of its type.
+    private void sortElemental (int enemyIndex){
+        if(enemyIndex == 0){
+            el1.Add(enemyIndex);
+        }
+        if(enemyIndex == 1){
+            el2.Add(enemyIndex);
+        }
+        if(enemyIndex == 2){
+            el3.Add(enemyIndex);
+        }
+        if(enemyIndex == 3){
+            el4.Add(enemyIndex);
         }
     }
 
