@@ -13,4 +13,9 @@ public class Projectile : MonoBehaviour
         rb.velocity = transform.right * projectileSpeed;
     }
 
+    private void onCollisionEnter2D(Collider2D other){
+   //   if(other.name == "Player Projectile Ice(Clone)" || other.name == "Player Projectile Fire(Clone)" || other.name == "Player Projectile Water(Clone)"|| other.name == "Player Projectile Earth(Clone)"){
+           Debug.Log("Hello");
+     //   }
+    }
 }

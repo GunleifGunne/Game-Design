@@ -8,22 +8,35 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] bigBoyPrefabs;
 
     [Header("Spawn Settings")]
-    [SerializeField] float timeBetweenSpawns = 10;
-    [SerializeField] float timeBeforeFirstEnemy = 2;
     [SerializeField] int enemiesBeforeBoss = 10;
+    [SerializeField] float currentDifficulty = 0;
+
+//DifficultyMod % 0.25f should always = 0.
+     [SerializeField] float  difficultyMod = 0.25f;
+    public float maxDifficulty = 3.0f;
+    [SerializeField] float spawnTime = 2.0f;
 
     Vector3 spawnPosition;
     Camera gameCamera;
 
-    float xMin, xMax, yMin, yMax;
+    float xMin, xMax, yMin, yMax, timer;
 
     int enemyCounter = 1;
+
+    public List <int> el1, el2, el3, el4;
 
     private void Start()
     {
         SetUpSpawnBoundaries();
 
-        InvokeRepeating("SpawnEnemy", timeBeforeFirstEnemy, timeBetweenSpawns);
+    }
+
+    private void Update(){
+      timer += Time.deltaTime;
+      if(maxDifficulty > determineDifficulty()){
+      determineSpawn();
+      }
+ 
     }
 
     public Vector3 GetSpawnPosition()
@@ -57,6 +70,7 @@ public class EnemySpawner : MonoBehaviour
         if(enemyCounter % (enemiesBeforeBoss + 1) != 0)
         {
             int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            sortElemental(enemyIndex);
             Instantiate(enemyPrefabs[enemyIndex], GetSpawnPosition(), Quaternion.identity);
             enemyCounter++;
         }
@@ -82,4 +96,57 @@ public class EnemySpawner : MonoBehaviour
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
+    private void determineSpawn(){
+        if(spawnTime - timer <= 0){
+        SpawnEnemy();
+        timer = 0; 
+        spawnTime = Random.Range(0,8);
+        }
+    }
+    //Determine current difficulty of game
+    private float determineDifficulty(){
+        currentDifficulty = 0;
+
+        for(int i = 0; i < el1.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el2.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el3.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i < el4.Count; i++){
+            currentDifficulty++;
+        }
+        return currentDifficulty;
+    }
+
+    //Adds spawned enemy to a list with other enemies of its type.
+    private void sortElemental (int enemyIndex){
+        if(enemyIndex == 0){
+            el1.Add(enemyIndex);
+        }
+        if(enemyIndex == 1){
+            el2.Add(enemyIndex);
+        }
+        if(enemyIndex == 2){
+            el3.Add(enemyIndex);
+        }
+        if(enemyIndex == 3){
+            el4.Add(enemyIndex);
+        }
+    }
+
+//Gives breathing room every now and then
+    private bool waveControl(){
+        if(currentDifficulty >= maxDifficulty){
+        return true;
+        }
+        else return false;
+    }
+
+    public void increaseDifficulty(){
+        maxDifficulty += difficultyMod;
+    }
 }
