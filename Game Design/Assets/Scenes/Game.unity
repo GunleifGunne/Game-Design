@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 6828392083188260556, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6620774656613232242, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
@@ -1069,7 +1069,7 @@ PrefabInstance:
     - target: {fileID: 1045339615140780015, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.43
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 1045339615140780015, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
@@ -1867,7 +1867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1796556549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2232,7 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e41336bfe94aa4fb09cf019fbd7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 3
   horizontalCTRL: P1Horizontal
   verticalCTRL: P1Vertical
 --- !u!114 &1968461527
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1796556549}
   shootCTRL: P1Fire
-  attackCooldown: 2
+  attackCooldown: 1.25
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
@@ -2759,7 +2759,7 @@ PrefabInstance:
     - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e41336bfe94aa4fb09cf019fbd7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 5
   horizontalCTRL: P2Horizontal
   verticalCTRL: P2Vertical
 --- !u!95 &5671197304818461763
@@ -3127,7 +3127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1398127718}
   shootCTRL: P2Fire
-  attackCooldown: 2
+  attackCooldown: 1.5
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}

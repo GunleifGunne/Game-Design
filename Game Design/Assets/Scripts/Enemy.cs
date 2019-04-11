@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 1f;
     [SerializeField] GameObject icon;
     [SerializeField] int points = 200;
 
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
     Vector3 targetPosition, targetHousePos;
     Vector3 originalSize;
 
-    bool grow = true;
+    bool grow = false;
     bool callScaleRoutine = true;
     bool flipMe = false;
 
@@ -120,24 +120,7 @@ public class Enemy : MonoBehaviour
         if (transform.position == targetPosition && callScaleRoutine)
         {
             callScaleRoutine = false;
-            StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
-        }
-    }
-
-    IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
-    {
-        while (grow == true)
-        {
-            yield return new WaitForSeconds(scaleSizeTime);
-
-            transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
-            points -= 50;
-
-            if (transform.localScale == new Vector3(maxSizeX, maxSizeY, 1f))
-            {
-                grow = false;
-                StartCoroutine(ShootParticle(timeBetweenAttacks));
-            }
+            StartCoroutine(ShootParticle(timeBetweenAttacks));
         }
     }
 
@@ -157,9 +140,6 @@ public class Enemy : MonoBehaviour
         if (other.tag == isKilledBy)
         {
             Die();
-        }
-        if(other.name == "Player Projectile Ice(Clone)" || other.name == "Player Projectile Fire(Clone)" || other.name == "Player Projectile Water(Clone)"|| other.name == "Player Projectile Earth(Clone)"){
-           Destroy(other);
         }
     }
 

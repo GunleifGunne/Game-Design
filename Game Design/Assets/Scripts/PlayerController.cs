@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField] float moveSpeed = 10.0f;
+    [SerializeField] float moveSpeed = 50.0f;
     [SerializeField] string horizontalCTRL = "P1Horizontal";
     [SerializeField] string verticalCTRL = "P1Vertical";
 
