@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
 
     int enemyCounter = 1;
 
-    public List <int> el1, el2, el3, el4;
+    public List <int> el1, el2, el3, el4, el5;
 
     private void Start()
     {
@@ -79,6 +79,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             SpawnBigBoy();
+            sortElemental(4);
             enemyCounter++;
         }
     }
@@ -100,9 +101,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void determineSpawn(){
         if(spawnTime - timer <= 0){
+        if(GameObject.Find("Houses").transform.childCount*4 >= maxDifficulty){
         SpawnEnemy();
         timer = 0; 
         spawnTime = Random.Range(0,8);
+        }
         }
     }
     //Determine current difficulty of game
@@ -119,6 +122,9 @@ public class EnemySpawner : MonoBehaviour
             currentDifficulty++;
         }
         for(int i = 0; i < el4.Count; i++){
+            currentDifficulty++;
+        }
+        for(int i = 0; i< el5.Count; i++){
             currentDifficulty++;
         }
         return currentDifficulty;
@@ -138,14 +144,9 @@ public class EnemySpawner : MonoBehaviour
         if(enemyIndex == 3){
             el4.Add(enemyIndex);
         }
-    }
-
-//Gives breathing room every now and then
-    private bool waveControl(){
-        if(currentDifficulty >= maxDifficulty){
-        return true;
+        if(enemyIndex == 4){
+            el5.Add(enemyIndex);
         }
-        else return false;
     }
 
 //As long as there are spaces, increase the max number of enemies by 1. Otherwise increase their MS and fire rate.

@@ -165,6 +165,12 @@ public class BigEnemy : MonoBehaviour
         //}
     }
 
+     private void sortElemental(){
+        if(this.name == "Big Boy(Clone)"){
+          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el5.RemoveAt(0);
+        }
+    }
+
     IEnumerator CheckCollision1()
     {
         yield return new WaitForSeconds(1);
