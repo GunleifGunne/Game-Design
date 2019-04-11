@@ -10,6 +10,8 @@ public class Building : MonoBehaviour
     [SerializeField] int lives = 2;
     [SerializeField] GameObject life;
     [SerializeField] Sprite destroyedSprite;
+    [SerializeField] CameraShake shake;
+
     private AudioSource DestroySound;
 
     HealthBar healthBar;
@@ -18,6 +20,9 @@ public class Building : MonoBehaviour
 
     private float houseSpriteHeight;
     private float currentHealth;
+
+    int lifeCounter = 2;
+    bool isShake = false;
 
     private void Start()
     {
@@ -34,6 +39,15 @@ public class Building : MonoBehaviour
 
         DestroySound = GameObject.Find("Sound").GetComponent<BGMusic>().houseDestroyed;
         
+    }
+
+    private void Update()
+    {
+        if (lifeCounter < 2 && isShake == true)
+        {
+            StartCoroutine(shake.shakeTrigger(1));
+        }
+        isShake = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,6 +78,9 @@ public class Building : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
         DestroySound.Play();
         Destroy(life);
+
+        lifeCounter--;
+        isShake = true;
     }
 
     public float GetHealthPercentage()
