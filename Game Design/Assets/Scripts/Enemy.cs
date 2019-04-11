@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 1f;
+    [SerializeField] float movementSpeed = 0.1f;
     [SerializeField] GameObject icon;
     [SerializeField] int points = 200;
 
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
-    [SerializeField] float timeBetweenAttacks = 2;
+    [SerializeField] float timeBetweenAttacks = 1.9f;
     [SerializeField] float projectileSpeed = 1;
 
     float movementThisFrame;
@@ -54,6 +54,9 @@ public class Enemy : MonoBehaviour
 
         elementalShoot = GameObject.Find("Sound").GetComponent<BGMusic>().elementalShoot;
         elementalDeath = GameObject.Find("Sound").GetComponent<BGMusic>().elementalDeath;
+
+        movementSpeed = movementSpeed + GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().actionSpeed;
+        timeBetweenAttacks = timeBetweenAttacks * (1.0f - 0.1f*GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().actionSpeed) + 0.1f;
     }
 
     // Update is called once per frame

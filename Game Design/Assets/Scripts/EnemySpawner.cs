@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
 
 //DifficultyMod % 0.25f should always = 0.
      [SerializeField] float  difficultyMod = 0.25f;
+     [SerializeField] float actionSpeedMod = 0.1f;
+    public float actionSpeed = 0.0f;
     public float maxDifficulty = 3.0f;
     [SerializeField] float spawnTime = 2.0f;
 
@@ -146,7 +148,13 @@ public class EnemySpawner : MonoBehaviour
         else return false;
     }
 
+//As long as there are spaces, increase the max number of enemies by 1. Otherwise increase their MS and fire rate.
     public void increaseDifficulty(){
+        if(GameObject.Find("Houses").transform.childCount*4 >= maxDifficulty){ 
         maxDifficulty += difficultyMod;
+        }
+        if(GameObject.Find("Houses").transform.childCount*4 < maxDifficulty){ 
+        actionSpeed += actionSpeedMod;
+        }
     }
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62f80eb4ffae4c4f834112f38db9b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0.75
+  movementSpeed: 0.5
   icon: {fileID: 254879443722059340}
   points: 200
   scaleSizeTime: 2
