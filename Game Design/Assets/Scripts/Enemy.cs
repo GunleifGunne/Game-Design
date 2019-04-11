@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     string isKilledBy;
 
     GameObject projectile, targetPositionObject, targetHouse;
-    ScoreManager scoreManager;
+    ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
 
     Vector3 targetPosition, targetHousePos;
@@ -36,13 +36,13 @@ public class Enemy : MonoBehaviour
     bool callScaleRoutine = true;
     bool flipMe = false;
 
-    AudioSource elementalShoot;
+    AudioSource elementalShoot, elementalDeath;
 
     // Start is called before the first frame update
     void Start()
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreUpdate = FindObjectOfType<ScoreUpdate>();
 
         isKilledBy = icon.GetComponent<SpriteRenderer>().sprite.name;
 
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
 
         elementalShoot = GameObject.Find("Sound").GetComponent<BGMusic>().elementalShoot;
+        elementalDeath = GameObject.Find("Sound").GetComponent<BGMusic>().elementalDeath;
     }
 
     // Update is called once per frame
@@ -156,6 +157,9 @@ public class Enemy : MonoBehaviour
         if (other.tag == isKilledBy)
         {
             Die();
+        }
+        if(other.name == "Player Projectile Ice(Clone)" || other.name == "Player Projectile Fire(Clone)" || other.name == "Player Projectile Water(Clone)"|| other.name == "Player Projectile Earth(Clone)"){
+           Destroy(other);
         }
     }
 

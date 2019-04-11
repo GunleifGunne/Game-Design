@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 803836158273067518}
   - component: {fileID: 7797633931286847401}
   - component: {fileID: 5480769560591489302}
+  - component: {fileID: 2114913625196160417}
   m_Layer: 9
   m_Name: Earth Enemy
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 647848319
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 18f2e6126cad4054fbf6ea2e808fc22b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e536847cfb06fd5499196bf2ab92fd30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62f80eb4ffae4c4f834112f38db9b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   icon: {fileID: 4260597193497584967}
   points: 200
   scaleSizeTime: 2
@@ -129,6 +130,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6413938, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2114913625196160417
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3629208033951579324}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6604020c965c0c042a9857c48ee4a85f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &213692047056193830
 PrefabInstance:
   m_ObjectHideFlags: 0

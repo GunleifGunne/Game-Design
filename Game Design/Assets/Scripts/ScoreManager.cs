@@ -1,31 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public static class ScoreManager
 {
-    [SerializeField] TextMeshProUGUI scoreText;
+    private static int score;
 
-    private int score = 0;
-
-    void Start()
+    public static int Score
     {
-        scoreText.text = score.ToString();
+        get
+        {
+            return score;
+        }
+        set
+        {
+            score = value;
+        }
     }
 
-    void Update()
+    public static void Reset()
     {
-        scoreText.text = score.ToString();
+        ScoreManager.Score = 0;
     }
 
-    //private void SetUpSingleton()
-    //{
-    //    int numberOfScoreManagers = FindObjectsOfType<ScoreManager>
-    //}
-
-    public void AddToScore(int points)
+    public static void AddToScore(int points)
     {
-        score += points;
+        ScoreManager.Score += points;
     }
 }

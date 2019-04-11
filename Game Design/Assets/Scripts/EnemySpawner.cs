@@ -101,9 +101,6 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemy();
         timer = 0; 
         spawnTime = Random.Range(0,8);
-        if(waveControl()){
-        
-        }
         }
     }
     //Determine current difficulty of game

@@ -7,11 +7,15 @@ public class Building : MonoBehaviour
     [SerializeField] Transform healthBarPrefab;
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
+    [SerializeField] int lives = 2;
+    [SerializeField] GameObject life;
     [SerializeField] Sprite destroyedSprite;
     private AudioSource DestroySound;
 
     HealthBar healthBar;
     Sprite houseSprite;
+    SceneLoader sceneLoader = new SceneLoader();
+    Rigidbody gameObjectsRigidbody;
 
     private float houseSpriteHeight;
     private float currentHealth;
@@ -44,9 +48,14 @@ public class Building : MonoBehaviour
     {
         currentHealth -= damage.GetDamage();
         damage.Hit();
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
+
+            if (GameObject.FindGameObjectsWithTag("Destroyed").Length >= lives)
+            {
+                sceneLoader.LoadGameOverScene();
+            }
         }
     }
 
@@ -55,10 +64,17 @@ public class Building : MonoBehaviour
         gameObject.tag = "Destroyed";
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
         DestroySound.Play();
+        Destroy(life);
     }
 
     public float GetHealthPercentage()
     {
         return currentHealth / health;
+    }
+
+    void OnCollisionEnter2D (Collision2D other){
+        if(other.gameObject.name == "Player Projectile Ice(Clone)" || other.gameObject.name == "Player Projectile Fire(Clone)" || other.gameObject.name == "Player Projectile Water(Clone)"|| other.gameObject.name == "Player Projectile Earth(Clone)"){
+        Destroy(other.gameObject);
+        }
     }
 }
