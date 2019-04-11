@@ -10,7 +10,6 @@ public class BGMusic : MonoBehaviour
     {
         BMusic.Play();
         BMusic.loop = true;
-        
     }
 
     // Update is called once per frame
