@@ -104,7 +104,7 @@ public class EnemySpawner : MonoBehaviour
         if(GameObject.Find("Houses").transform.childCount*4 >= maxDifficulty){
         SpawnEnemy();
         timer = 0; 
-        spawnTime = Random.Range(0,8);
+        spawnTime = Random.Range(0,6 - maxDifficulty/2);
         }
         }
     }
