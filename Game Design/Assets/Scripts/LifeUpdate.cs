@@ -8,13 +8,13 @@ public class LifeUpdate : MonoBehaviour
     [SerializeField] Image firstLife;
     [SerializeField] Image secondLife;
 
-    SceneLoader sceneLoader = new SceneLoader();
+    SceneLoader sceneLoader;
 
     // Start is called before the first frame update
     void Start()
     {
+        sceneLoader = new SceneLoader();
         LifeManager.ResetLife();
-        StartCoroutine(GameOverWithDelay());
         firstLife.gameObject.SetActive(true);
         secondLife.gameObject.SetActive(true);
     }
@@ -36,22 +36,16 @@ public class LifeUpdate : MonoBehaviour
         {
             firstLife.gameObject.SetActive(false);
             LifeManager.GameOver();
+            StartCoroutine(GameOverWithDelay());
         }
     }
 
     IEnumerator GameOverWithDelay()
     {
-        while (true)
+        if (LifeManager.isGameOver)
         {
-            if (LifeManager.isGameOver)
-            {
-                yield return new WaitForSeconds(2);
-                sceneLoader.LoadGameOverScene();
-            }
-            else
-            {
-                yield return null;
-            }
+            yield return new WaitForSeconds(2);
+            sceneLoader.LoadGameOverScene();
         }
     }
 }
