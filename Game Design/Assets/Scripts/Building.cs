@@ -7,8 +7,6 @@ public class Building : MonoBehaviour
     [SerializeField] Transform healthBarPrefab;
     [SerializeField] float healthBarYOffset = 0.05f;
     [SerializeField] float health = 100;
-    [SerializeField] int lives = 2;
-    [SerializeField] GameObject life;
     [SerializeField] Sprite destroyedSprite;
     [SerializeField] CameraShake shake;
 
@@ -16,7 +14,6 @@ public class Building : MonoBehaviour
 
     HealthBar healthBar;
     Sprite houseSprite;
-    SceneLoader sceneLoader = new SceneLoader();
 
     private float houseSpriteHeight;
     private float currentHealth;
@@ -43,9 +40,16 @@ public class Building : MonoBehaviour
 
     private void Update()
     {
-        if (lifeCounter < 2 && isShake == true)
+        if (LifeManager.Counter < 2 && isShake == true)
         {
-            StartCoroutine(shake.shakeTrigger(1));
+            if (LifeManager.isGameOver)
+            {
+                StartCoroutine(shake.shakeTrigger(6));
+            }
+            else
+            {
+                StartCoroutine(shake.shakeTrigger(1));
+            }
         }
         isShake = false;
     }
@@ -64,11 +68,6 @@ public class Building : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-
-            if (GameObject.FindGameObjectsWithTag("Destroyed").Length >= lives)
-            {
-                sceneLoader.LoadGameOverScene();
-            }
         }
     }
 
@@ -77,9 +76,8 @@ public class Building : MonoBehaviour
         gameObject.tag = "Destroyed";
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
         DestroySound.Play();
-        Destroy(life);
+        LifeManager.ReduceLife();
 
-        lifeCounter--;
         isShake = true;
     }
 
