@@ -41,12 +41,12 @@ public class Leaderboard : MonoBehaviour
             }
             else
             {
-                submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text, teamNameInput); });
+                submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text); });
             }
         }
         else
         {
-            submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text, teamNameInput); });
+            submitBtn.onClick.AddListener(delegate { SaveScore(ScoreManager.Score.ToString(), teamNameInput.text); });
         }
 
 
@@ -62,23 +62,17 @@ public class Leaderboard : MonoBehaviour
         scoreText.text = "Your team's score:        " + ScoreManager.Score;
     }
 
-    void SaveScore(string score, string teamName, TMP_InputField nameInput)
+    void SaveScore(string score, string teamName)
     {
-        if(nameInput.text != "")
-        {
-            PlayerInfo highscore = new PlayerInfo(teamName, int.Parse(score));
-            highscoreArraySession.Add(highscore);
 
-            teamNameInput.text = "";
-            teamNameInput.gameObject.SetActive(false);
-            submitBtn.gameObject.SetActive(false);
+        PlayerInfo highscore = new PlayerInfo(teamName, int.Parse(score));
+        highscoreArraySession.Add(highscore);
 
-            SortLeaderboard();
-        }
-        else
-        {
-            nameInput.selectionColor = Color.red;
-        }
+        teamNameInput.text = "";
+        teamNameInput.gameObject.SetActive(false);
+        submitBtn.gameObject.SetActive(false);
+
+        SortLeaderboard();
     }
 
     void SortLeaderboard()

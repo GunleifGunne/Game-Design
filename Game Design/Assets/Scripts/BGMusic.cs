@@ -15,16 +15,6 @@ public class BGMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReducePitch();
+        
     }
-
-    public void ReducePitch()
-    {
-        if(LifeManager.isGameOver && BMusic.pitch > 0)
-        {
-            float reduce = .5f;
-            BMusic.pitch -= Time.deltaTime * reduce;
-        }
-    }
-
 }
