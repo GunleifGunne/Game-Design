@@ -11,6 +11,14 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * projectileSpeed;
-    }
 
+        if(PlayerAnimation.verticalUpwardsFirePoint == true)
+        {
+            rb.velocity = transform.up * projectileSpeed;
+        }
+        if(PlayerAnimation.verticalDownwardsFirePoint == true)
+        {
+            rb.velocity = (transform.up * -1) * projectileSpeed;
+        }
+    }
 }
