@@ -98,7 +98,7 @@ MonoBehaviour:
   movementSpeed: 3
   icon: {fileID: 8795084857334944023}
   points: 200
-  deathVFXPrefab: {fileID: 8346226979178960975, guid: 0e441fe3f69951748ac0ec829da5aed2,
+  deathVFXPrefab: {fileID: 4966897020155404593, guid: 518e442088fe85e42ac638b3be0eb9d8,
     type: 3}
   durationOfVFX: 0.6
   scaleSizeTime: 2
