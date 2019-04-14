@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float timeBetweenAttacks = 2;
-    [SerializeField] float projectileSpeed = 1;
+    [SerializeField] float projectileHorizontalSpeed = 1;
+    [SerializeField] float projectileVerticalSpeed = 1;
 
     float movementThisFrame;
     float spawnToTargetDif;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour
     Vector3 targetPosition, targetHousePos;
     Vector3 originalSize;
 
-    bool grow = true;
+    bool grow = false;
     bool callScaleRoutine = true;
     bool flipMe = false;
 
@@ -85,8 +86,25 @@ public class Enemy : MonoBehaviour
 
         if (targetHousePos.x - targetPosition.x < 0)
         {
-            projectileSpeed *= -1;
+            projectileVerticalSpeed = 0;
+            projectileHorizontalSpeed *= -1;
             projectilePrefab.transform.Rotate(0f, 180f, 0f);
+        }
+
+        else if(targetHousePos.x - targetPosition.x > 0){
+            projectileVerticalSpeed = 0;
+        }
+
+        else if(targetHousePos.y - targetPosition.y < 0)
+        {
+            projectileHorizontalSpeed = 0;
+            projectileVerticalSpeed *= -1;
+             projectilePrefab.transform.Rotate(90f, 90f, 0f);
+        }
+
+        else if(targetHousePos.y - targetPosition.y > 0){
+            projectileHorizontalSpeed = 0;
+             projectilePrefab.transform.Rotate(90f, 90f, 0f);
         }
     }
 
@@ -122,24 +140,7 @@ public class Enemy : MonoBehaviour
         if (transform.position == targetPosition && callScaleRoutine)
         {
             callScaleRoutine = false;
-            StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
-        }
-    }
-
-    IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
-    {
-        while (grow == true)
-        {
-            yield return new WaitForSeconds(scaleSizeTime);
-
-            transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
-            points -= 50;
-
-            if (transform.localScale == new Vector3(maxSizeX, maxSizeY, 1f))
-            {
-                grow = false;
-                StartCoroutine(ShootParticle(timeBetweenAttacks));
-            }
+            StartCoroutine(ShootParticle(timeBetweenAttacks));
         }
     }
 
@@ -149,7 +150,7 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenAttacks);
             projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as GameObject;
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileHorizontalSpeed, projectileVerticalSpeed);
             elementalShoot.Play();
         }
     }
