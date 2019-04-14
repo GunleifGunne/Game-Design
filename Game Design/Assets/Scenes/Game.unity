@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 6828392083188260556, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6620774656613232242, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
@@ -2227,7 +2227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1796556549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2622,7 +2622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e41336bfe94aa4fb09cf019fbd7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 3
   horizontalCTRL: P1Horizontal
   verticalCTRL: P1Vertical
 --- !u!114 &1968461527
@@ -3182,7 +3182,7 @@ PrefabInstance:
     - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
@@ -3514,7 +3514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e41336bfe94aa4fb09cf019fbd7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 3
   horizontalCTRL: P2Horizontal
   verticalCTRL: P2Vertical
 --- !u!95 &5671197304818461763
