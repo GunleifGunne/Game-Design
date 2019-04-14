@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
       if(maxDifficulty > determineDifficulty()){
       determineSpawn();
       }
-     Debug.Log(maxDifficulty);
+ 
     }
 
     public Vector3 GetSpawnPosition()

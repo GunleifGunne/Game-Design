@@ -6,9 +6,12 @@ public class ShootController : MonoBehaviour
 {
     [SerializeField] Transform firePoint, upFirePoint, downFirePoint;
     [SerializeField] string shootCTRL = "P1Fire";
+
+    [SerializeField] float attackCooldown = 2.0f;
     [SerializeField] GameObject[] projectilePrefabs;
     GameObject projectile;
     private AudioSource heroShoot;
+    private float timer;
 
     void Start(){
         heroShoot = GameObject.Find("Sound").GetComponent<BGMusic>().heroShoot;
@@ -17,6 +20,7 @@ public class ShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         Shoot();
     }
 
@@ -24,6 +28,7 @@ public class ShootController : MonoBehaviour
     {
         if (Input.GetButtonDown(shootCTRL))
         {
+            if(timer >= attackCooldown){
             if(gameObject.tag == "Fire Element")
             {
                 if(PlayerAnimation.verticalUpwardsFirePoint == true)
@@ -89,8 +94,9 @@ public class ShootController : MonoBehaviour
                 
                 heroShoot.Play();
             }
-
-            Destroy(projectile, 0.2f);
+            timer = 0;
+        }
+            Destroy(projectile, 4.0f);
         }
     }
 }

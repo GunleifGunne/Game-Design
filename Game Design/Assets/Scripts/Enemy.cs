@@ -160,6 +160,9 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        if(other.name == "Player Projectile Ice(Clone)" || other.name == "Player Projectile Fire(Clone)" || other.name == "Player Projectile Water(Clone)"|| other.name == "Player Projectile Earth(Clone)"){
+           Destroy(other);
+        }
     }
 
     private void Die()

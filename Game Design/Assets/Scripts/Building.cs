@@ -14,6 +14,8 @@ public class Building : MonoBehaviour
 
     HealthBar healthBar;
     Sprite houseSprite;
+    SceneLoader sceneLoader = new SceneLoader();
+    Rigidbody gameObjectsRigidbody;
 
     private float houseSpriteHeight;
     private float currentHealth;
@@ -84,5 +86,11 @@ public class Building : MonoBehaviour
     public float GetHealthPercentage()
     {
         return currentHealth / health;
+    }
+
+    void OnCollisionEnter2D (Collision2D other){
+        if(other.gameObject.name == "Player Projectile Ice(Clone)" || other.gameObject.name == "Player Projectile Fire(Clone)" || other.gameObject.name == "Player Projectile Water(Clone)"|| other.gameObject.name == "Player Projectile Earth(Clone)"){
+        Destroy(other.gameObject);
+        }
     }
 }
