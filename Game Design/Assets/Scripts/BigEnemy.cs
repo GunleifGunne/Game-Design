@@ -169,6 +169,7 @@ public class BigEnemy : MonoBehaviour
     {
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
+        sortElemental();
         Destroy(gameObject);
         GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
         Destroy(deathVFX, durationOfVFX);
@@ -178,7 +179,14 @@ public class BigEnemy : MonoBehaviour
     {
         if (targetHouse.tag == "Destroyed")
         {
+            sortElemental();
             Destroy(gameObject);
+        }
+    }
+
+         private void sortElemental(){
+        if(this.name == "Big Boy(Clone)"){
+          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el5.RemoveAt(0);
         }
     }
 }

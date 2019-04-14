@@ -167,6 +167,8 @@ public class Enemy : MonoBehaviour
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
         elementalDeath.Play();
+        sortElemental();
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().increaseDifficulty();
         Destroy(gameObject);
         GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
         Destroy(deathVFX, durationOfVFX);
@@ -176,7 +178,24 @@ public class Enemy : MonoBehaviour
     {
         if (targetHouse.tag == "Destroyed")
         {
+            sortElemental();
             Destroy(gameObject);
+        }
+    }
+
+       //When an enemy dies it removes itself from its type's list.
+    private void sortElemental(){
+        if(this.name == "Earth Enemy(Clone)"){
+          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el1.RemoveAt(0);
+        }
+        if(this.name == "Fire Enemy(Clone)"){
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el2.RemoveAt(0);
+        }
+        if(this.name == "Ice Enemy(Clone)"){
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el3.RemoveAt(0);
+        }
+        if(this.name == "Water Enemy(Clone)"){
+          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el4.RemoveAt(0);
         }
     }
 }
