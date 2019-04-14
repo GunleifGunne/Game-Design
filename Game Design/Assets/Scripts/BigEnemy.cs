@@ -6,6 +6,8 @@ public class BigEnemy : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] int points = 200;
+    [SerializeField] GameObject deathVFXPrefab;
+    [SerializeField] float durationOfVFX;
 
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
@@ -149,20 +151,6 @@ public class BigEnemy : MonoBehaviour
         {
             Die();
         }
-
-        //if (other.tag == isKilledBy1)
-        //{
-        //    hasCollidedWithObj1 = true;
-        //}
-        //else if (other.tag == isKilledBy2)
-        //{
-        //    hasCollidedWithObj2 = true;
-        //}
-
-        //if (hasCollidedWithObj1 && hasCollidedWithObj2)
-        //{
-        //    Destroy(gameObject);
-        //}
     }
 
     IEnumerator CheckCollision1()
@@ -182,6 +170,8 @@ public class BigEnemy : MonoBehaviour
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
         Destroy(gameObject);
+        GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
+        Destroy(deathVFX, durationOfVFX);
     }
 
     private void Remove()

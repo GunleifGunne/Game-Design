@@ -101,7 +101,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,6 +130,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 0.5
   points: 500
+  deathVFXPrefab: {fileID: 1013716424004886420, guid: e9d1c251241484a46bb068850869e4d6,
+    type: 3}
+  durationOfVFX: 2.5
   projectilePrefab: {fileID: 1973797488871700, guid: 79a5c415159f99c4a932b96a5d59c691,
     type: 3}
   timeBetweenAttacks: 3

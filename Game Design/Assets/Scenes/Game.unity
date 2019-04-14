@@ -3866,6 +3866,24 @@ PrefabInstance:
       propertyPath: enemiesBeforeBoss
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: fb2b8e7092c625c4bbcc7fb4830620a0,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: b2ff140b5dc42094583c6d9b0b5b1bf3,
+        type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 3629208033951579324, guid: e055f2f60c947e046a28031c3dc9bb96,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}
 --- !u!1001 &9123785069141824889

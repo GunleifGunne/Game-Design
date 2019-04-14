@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] GameObject icon;
     [SerializeField] int points = 200;
+    [SerializeField] GameObject deathVFXPrefab;
+    [SerializeField] float durationOfVFX;
 
     [Header("Scale Settings")]
     [SerializeField] float scaleSizeTime = 5;
@@ -164,8 +166,10 @@ public class Enemy : MonoBehaviour
     {
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
-        Destroy(gameObject);
         elementalDeath.Play();
+        Destroy(gameObject);
+        GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
+        Destroy(deathVFX, durationOfVFX);
     }
 
     private void Remove()
