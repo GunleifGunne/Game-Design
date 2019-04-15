@@ -5,15 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
-    [SerializeField] GameObject[] bigBoyPrefabs;
+    [SerializeField] GameObject bigBoyPrefab;
 
     [Header("Spawn Settings")]
     [SerializeField] int enemiesBeforeBoss = 10;
     [SerializeField] float currentDifficulty = 0;
 
 //DifficultyMod % 0.25f should always = 0.
-     [SerializeField] float  difficultyMod = 0.25f;
-     [SerializeField] float actionSpeedMod = 0.1f;
+    [SerializeField] float  difficultyMod = 0.25f;
+    [SerializeField] float actionSpeedMod = 0.1f;
     public float actionSpeed = 0.0f;
     public float maxDifficulty = 3.0f;
     [SerializeField] float spawnTime = 2.0f;
@@ -33,12 +33,16 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    private void Update(){
-      timer += Time.deltaTime;
-      if(maxDifficulty > determineDifficulty()){
-      determineSpawn();
-      }
-     Debug.Log(maxDifficulty);
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if(maxDifficulty > determineDifficulty())
+        {
+            determineSpawn();
+        }
+
+        Debug.Log(maxDifficulty);
     }
 
     public Vector3 GetSpawnPosition()
@@ -86,8 +90,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnBigBoy()
     {
-        int bigBoyIndex = Random.Range(0, bigBoyPrefabs.Length);
-        Instantiate(bigBoyPrefabs[bigBoyIndex], GetSpawnPosition(), Quaternion.identity);
+        Instantiate(bigBoyPrefab, GetSpawnPosition(), Quaternion.identity);
     }
 
     private void SetUpSpawnBoundaries()
@@ -99,64 +102,92 @@ public class EnemySpawner : MonoBehaviour
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
-    private void determineSpawn(){
-        if(spawnTime - timer <= 0){
-        if(GameObject.Find("Houses").transform.childCount*2 >= maxDifficulty){
-        SpawnEnemy();
-        timer = 0; 
-        spawnTime = Random.Range(0,6 - maxDifficulty/2);
-        }
+    private void determineSpawn()
+    {
+        if (spawnTime - timer <= 0)
+        {
+            if (GameObject.Find("Houses").transform.childCount * 2 >= maxDifficulty)
+            {
+                SpawnEnemy();
+                timer = 0; 
+                spawnTime = Random.Range(0, 6 - maxDifficulty / 2);
+            }
         }
     }
+
     //Determine current difficulty of game
-    private float determineDifficulty(){
+    private float determineDifficulty()
+    {
         currentDifficulty = 0;
 
-        for(int i = 0; i < el1.Count; i++){
+        for(int i = 0; i < el1.Count; i++)
+        {
             currentDifficulty++;
         }
-        for(int i = 0; i < el2.Count; i++){
+
+        for(int i = 0; i < el2.Count; i++)
+        {
             currentDifficulty++;
         }
-        for(int i = 0; i < el3.Count; i++){
+
+        for(int i = 0; i < el3.Count; i++)
+        {
             currentDifficulty++;
         }
-        for(int i = 0; i < el4.Count; i++){
+
+        for(int i = 0; i < el4.Count; i++)
+        {
             currentDifficulty++;
         }
-        for(int i = 0; i< el5.Count; i++){
+
+        for(int i = 0; i< el5.Count; i++)
+        {
             currentDifficulty++;
         }
+
         return currentDifficulty;
     }
 
     //Adds spawned enemy to a list with other enemies of its type.
-    private void sortElemental (int enemyIndex){
-        if(enemyIndex == 0){
+    private void sortElemental (int enemyIndex)
+    {
+        if (enemyIndex == 0)
+        {
             el1.Add(enemyIndex);
         }
-        if(enemyIndex == 1){
+
+        if (enemyIndex == 1)
+        {
             el2.Add(enemyIndex);
         }
-        if(enemyIndex == 2){
+
+        if (enemyIndex == 2)
+        {
             el3.Add(enemyIndex);
         }
-        if(enemyIndex == 3){
+
+        if (enemyIndex == 3)
+        {
             el4.Add(enemyIndex);
         }
-        if(enemyIndex == 4){
+
+        if (enemyIndex == 4)
+        {
             el5.Add(enemyIndex);
         }
     }
 
-//As long as there are spaces, increase the max number of enemies by 1. Otherwise increase their MS and fire rate.
-    public void increaseDifficulty(){
-        if(GameObject.Find("Houses").transform.childCount*4 >= maxDifficulty){ 
-        maxDifficulty += difficultyMod;
+    //As long as there are spaces, increase the max number of enemies by 1. Otherwise increase their MS and fire rate.
+    public void increaseDifficulty()
+    {
+        if (GameObject.Find("Houses").transform.childCount * 4 >= maxDifficulty)
+        { 
+            maxDifficulty += difficultyMod;
         }
-        if(GameObject.Find("Houses").transform.childCount*4 < maxDifficulty){ 
-        actionSpeed += actionSpeedMod;
+
+        if (GameObject.Find("Houses").transform.childCount * 4 < maxDifficulty)
+        { 
+            actionSpeed += actionSpeedMod;
         }
     }
 }
-

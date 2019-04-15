@@ -184,18 +184,26 @@ public class Enemy : MonoBehaviour
     }
 
        //When an enemy dies it removes itself from its type's list.
-    private void sortElemental(){
-        if(this.name == "Earth Enemy(Clone)"){
-          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el1.RemoveAt(0);
+    private void sortElemental()
+    {
+        if (this.name == "Earth Enemy(Clone)")
+        {
+            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el1.RemoveAt(0);
         }
-        if(this.name == "Fire Enemy(Clone)"){
-        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el2.RemoveAt(0);
+
+        if (this.name == "Fire Enemy(Clone)")
+        {
+            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el2.RemoveAt(0);
         }
-        if(this.name == "Ice Enemy(Clone)"){
-        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el3.RemoveAt(0);
+
+        if (this.name == "Ice Enemy(Clone)")
+        {
+            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el3.RemoveAt(0);
         }
-        if(this.name == "Water Enemy(Clone)"){
-          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el4.RemoveAt(0);
+
+        if (this.name == "Water Enemy(Clone)")
+        {
+            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el4.RemoveAt(0);
         }
     }
 }

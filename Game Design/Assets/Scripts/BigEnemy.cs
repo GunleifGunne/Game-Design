@@ -184,8 +184,10 @@ public class BigEnemy : MonoBehaviour
         }
     }
 
-         private void sortElemental(){
-        if(this.name == "Big Boy(Clone)"){
+    private void sortElemental()
+    {
+        if (this.name == "Big Boy(Clone)")
+        {
           GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el5.RemoveAt(0);
         }
     }
