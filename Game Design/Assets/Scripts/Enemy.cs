@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 0.3f;
     [SerializeField] GameObject icon;
     [SerializeField] int points = 200;
     [SerializeField] GameObject deathVFXPrefab;
@@ -44,6 +44,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        movementSpeed = movementSpeed + GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().actionSpeed;
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreUpdate = FindObjectOfType<ScoreUpdate>();
 
@@ -79,7 +81,7 @@ public class Enemy : MonoBehaviour
         targetHousePos = targetHouse.transform.position;
         spawnToTargetDif = transform.position.x - targetPosition.x;
 
-        if (spawnToTargetDif > 0)
+         if (spawnToTargetDif > 0)
         {
             transform.Rotate(0f, 180f, 0f);
         }
@@ -99,12 +101,10 @@ public class Enemy : MonoBehaviour
         {
             projectileHorizontalSpeed = 0;
             projectileVerticalSpeed *= -1;
-             projectilePrefab.transform.Rotate(90f, 90f, 0f);
         }
 
         else if(targetHousePos.y - targetPosition.y > 0){
             projectileHorizontalSpeed = 0;
-             projectilePrefab.transform.Rotate(90f, 90f, 0f);
         }
     }
 

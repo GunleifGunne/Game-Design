@@ -2646,7 +2646,7 @@ MonoBehaviour:
   upFirePoint: {fileID: 1379414908}
   downFirePoint: {fileID: 1169025372}
   shootCTRL: P1Fire
-  attackCooldown: 1
+  attackCooldown: 0.75
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
@@ -3557,7 +3557,7 @@ MonoBehaviour:
   upFirePoint: {fileID: 1130235006}
   downFirePoint: {fileID: 1934851153}
   shootCTRL: P2Fire
-  attackCooldown: 1
+  attackCooldown: 0.75
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}

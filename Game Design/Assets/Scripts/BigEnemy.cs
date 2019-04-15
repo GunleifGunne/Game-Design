@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BigEnemy : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 0.3f;
     [SerializeField] int points = 200;
     [SerializeField] GameObject deathVFXPrefab;
     [SerializeField] float durationOfVFX;
@@ -12,7 +12,8 @@ public class BigEnemy : MonoBehaviour
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float timeBetweenAttacks = 2;
-    [SerializeField] float projectileSpeed = 1;
+  [SerializeField] float projectileHorizontalSpeed = 1;
+    [SerializeField] float projectileVerticalSpeed = 1;
 
     [SerializeField] GameObject icon1;
     [SerializeField] GameObject icon2;
@@ -40,6 +41,7 @@ public class BigEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        movementSpeed = movementSpeed + GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().actionSpeed;
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreUpdate = FindObjectOfType<ScoreUpdate>();
 
@@ -73,7 +75,7 @@ public class BigEnemy : MonoBehaviour
         isKilledBy2 = elementSprites2[icon2SpriteIndex].name;
     }
 
-    private void AssignTarget()
+      private void AssignTarget()
     {
         target = Random.Range(0, availableTargets.availableTargets.Count);
         targetPositionObject = availableTargets.GetTargetPosition(target);
@@ -82,18 +84,35 @@ public class BigEnemy : MonoBehaviour
 
         targetPosition = targetPositionObject.transform.position;
         targetHousePos = targetHouse.transform.position;
-
         spawnToTargetDif = transform.position.x - targetPosition.x;
 
-        if (spawnToTargetDif > 0)
+         if (spawnToTargetDif > 0)
         {
             transform.Rotate(0f, 180f, 0f);
         }
+        
 
         if (targetHousePos.x - targetPosition.x < 0)
         {
-            projectileSpeed *= -1;
+            projectileVerticalSpeed = 0;
+            projectileHorizontalSpeed *= -1;
             projectilePrefab.transform.Rotate(0f, 180f, 0f);
+        }
+
+        else if(targetHousePos.x - targetPosition.x > 0){
+            projectileVerticalSpeed = 0;
+        }
+
+        else if(targetHousePos.y - targetPosition.y < 0)
+        {
+            projectileHorizontalSpeed = 0;
+            projectileVerticalSpeed *= -1;
+             projectilePrefab.transform.Rotate(90f, 90f, 0f);
+        }
+
+        else if(targetHousePos.y - targetPosition.y > 0){
+            projectileHorizontalSpeed = 0;
+             projectilePrefab.transform.Rotate(90f, 90f, 0f);
         }
     }
 
@@ -130,7 +149,7 @@ public class BigEnemy : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenAttacks);
             projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as GameObject;
-            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
+            projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileHorizontalSpeed, projectileVerticalSpeed);
         }
     }
 

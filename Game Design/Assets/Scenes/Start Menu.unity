@@ -1094,7 +1094,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: INSERT TITLE HERE
+  m_text: Catastrophe Keepers
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0292ce50a8146a044b8eac2749eaf8e3, type: 2}
   m_sharedMaterial: {fileID: 21373024818392026, guid: 0292ce50a8146a044b8eac2749eaf8e3,
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 12
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1164,12 +1164,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1746764498}
-    characterCount: 17
+    characterCount: 19
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 3
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -1330,35 +1330,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'BlablablaBlablablaBlablabla
-
-    BlablablaBlablabla
-
-    Blablabla
-
-
-    BlablablaBlablablaBlablabla
-
-
-    BlablablaBlablablaBlablabla
-
-
-    BlablablaBlablabla
-
-    BlablablaBlablabla
-
-
-    BlablablaBlablablaBlablabla
-
-
-    BlablablaBlablabla
-
-    BlablablaBlablabla
-
-
-    BlablablaBlablablaBlablabla
-
-    Blablabla'
+  m_text: "\n\n\t\n\tProtect the houses for as long as you can!\n\n\t- Use WASD and
+    Arrows for movement and CTRL to shoot\n\tWhen you have an element\n\n\t- Walk
+    over elemental plates to pick it up.\n\n\n\t- Hit enemies with their counter element
+    to kill them\n\n\n\t- Bosses will need to be hit by both their counters at the\n\tsame
+    time"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0292ce50a8146a044b8eac2749eaf8e3, type: 2}
   m_sharedMaterial: {fileID: 21373024818392026, guid: 0292ce50a8146a044b8eac2749eaf8e3,
@@ -1428,12 +1404,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1885012033}
-    characterCount: 260
+    characterCount: 304
     spriteCount: 0
-    spaceCount: 17
-    wordCount: 12
+    spaceCount: 75
+    wordCount: 60
     linkCount: 0
-    lineCount: 18
+    lineCount: 16
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
