@@ -1294,12 +1294,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1492467842836110985, guid: e17d2c8b12999be4a845db13b30dff3d,
+    - target: {fileID: 7283679726208281145, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 7283679726208281145, guid: e17d2c8b12999be4a845db13b30dff3d,
+    - target: {fileID: 1492467842836110985, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1389,17 +1389,22 @@ PrefabInstance:
       propertyPath: shake
       value: 
       objectReference: {fileID: 4144580972443295517}
+    - target: {fileID: 3905068094613433359, guid: e17d2c8b12999be4a845db13b30dff3d,
+        type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.17
+      objectReference: {fileID: 0}
     - target: {fileID: 3269061769618987900, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1492467842836110985, guid: e17d2c8b12999be4a845db13b30dff3d,
+    - target: {fileID: 7283679726208281145, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 7283679726208281145, guid: e17d2c8b12999be4a845db13b30dff3d,
+    - target: {fileID: 1492467842836110985, guid: e17d2c8b12999be4a845db13b30dff3d,
         type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2641,7 +2646,7 @@ MonoBehaviour:
   upFirePoint: {fileID: 1379414908}
   downFirePoint: {fileID: 1169025372}
   shootCTRL: P1Fire
-  attackCooldown: 2
+  attackCooldown: 1
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
@@ -3552,7 +3557,7 @@ MonoBehaviour:
   upFirePoint: {fileID: 1130235006}
   downFirePoint: {fileID: 1934851153}
   shootCTRL: P2Fire
-  attackCooldown: 2
+  attackCooldown: 1
   projectilePrefabs:
   - {fileID: 1973797488871700, guid: 48e62e123dd802644bc0100e588f8a96, type: 3}
   - {fileID: 1973797488871700, guid: 0bd61083944b89c4da38940c5be3b258, type: 3}
