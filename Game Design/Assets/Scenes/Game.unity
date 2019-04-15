@@ -3971,7 +3971,7 @@ PrefabInstance:
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: enemiesBeforeBoss
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}

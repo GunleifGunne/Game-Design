@@ -67,7 +67,7 @@ public class Building : MonoBehaviour
     {
         currentHealth -= damage.GetDamage();
         damage.Hit();
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && this.GetComponent<SpriteRenderer>().sprite != destroyedSprite)
         {
             Die();
         }
