@@ -34,6 +34,7 @@ public class BigEnemy : MonoBehaviour
     GameObject projectile, targetPositionObject, targetHouse;
     ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
+    EnemySpawner enemySpawner;
 
     Vector3 targetPosition, targetHousePos;
 
@@ -42,6 +43,7 @@ public class BigEnemy : MonoBehaviour
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreUpdate = FindObjectOfType<ScoreUpdate>();
+        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
 
         AssignIcons();
         AssignTarget();
@@ -188,7 +190,7 @@ public class BigEnemy : MonoBehaviour
     {
         if (this.name == "Big Boy(Clone)")
         {
-          GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el5.RemoveAt(0);
+          enemySpawner.el5.RemoveAt(0);
         }
     }
 }

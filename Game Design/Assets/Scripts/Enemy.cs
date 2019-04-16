@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     float movementThisFrame;
     float spawnToTargetDif;
-    float maxSizeX, maxSizeY;
+    //float maxSizeX, maxSizeY;
 
     int target;
 
@@ -30,32 +30,40 @@ public class Enemy : MonoBehaviour
     GameObject projectile, targetPositionObject, targetHouse;
     ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
+    EnemySpawner enemySpawner;
 
     Vector3 targetPosition, targetHousePos;
-    Vector3 originalSize;
+    //Vector3 originalSize;
 
-    bool grow = true;
-    bool callScaleRoutine = true;
+    //bool grow = true;
+    //bool callScaleRoutine = true;
+    bool callShootRoutine = true;
     bool flipMe = false;
 
     AudioSource elementalShoot, elementalDeath;
+    BGMusic sounds;
 
     // Start is called before the first frame update
     void Start()
     {
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreUpdate = FindObjectOfType<ScoreUpdate>();
+        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        sounds = GameObject.Find("Sound").GetComponent<BGMusic>();
 
         isKilledBy = icon.GetComponent<SpriteRenderer>().sprite.name;
 
+        movementSpeed += enemySpawner.actionSpeed;
+        Debug.Log("Enemy Movement speed: " + movementSpeed);
+
         AssignTarget();
 
-        originalSize = transform.localScale;
-        maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
-        maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
+        //originalSize = transform.localScale;
+        //maxSizeX = originalSize.x + (originalSize.x * scaleFactor * 2);
+        //maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
 
-        elementalShoot = GameObject.Find("Sound").GetComponent<BGMusic>().elementalShoot;
-        elementalDeath = GameObject.Find("Sound").GetComponent<BGMusic>().elementalDeath;
+        elementalShoot = sounds.elementalShoot;
+        elementalDeath = sounds.elementalDeath;
     }
 
     // Update is called once per frame
@@ -63,7 +71,14 @@ public class Enemy : MonoBehaviour
     {
         Move();
         FlipAtTarget();
-        ScaleSize();
+
+        if(transform.position == targetPosition && callShootRoutine)
+        {
+            callShootRoutine = false;
+            StartCoroutine(ShootParticle(timeBetweenAttacks));
+        }
+
+        //ScaleSize();
         Remove();
     }
 
@@ -117,31 +132,31 @@ public class Enemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
     }
 
-    private void ScaleSize()
-    {
-        if (transform.position == targetPosition && callScaleRoutine)
-        {
-            callScaleRoutine = false;
-            StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
-        }
-    }
+    //private void ScaleSize()
+    //{
+    //    if (transform.position == targetPosition && callScaleRoutine)
+    //    {
+    //        callScaleRoutine = false;
+    //        StartCoroutine(ScaleSizeRoutine(scaleFactor, scaleSizeTime));
+    //    }
+    //}
 
-    IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
-    {
-        while (grow == true)
-        {
-            yield return new WaitForSeconds(scaleSizeTime);
+    //IEnumerator ScaleSizeRoutine(float scaleFactor, float scaleSizeTime)
+    //{
+    //    while (grow == true)
+    //    {
+    //        yield return new WaitForSeconds(scaleSizeTime);
 
-            transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
-            points -= 50;
+    //        transform.localScale += new Vector3(originalSize.x * scaleFactor, originalSize.y * scaleFactor);
+    //        points -= 50;
 
-            if (transform.localScale == new Vector3(maxSizeX, maxSizeY, 1f))
-            {
-                grow = false;
-                StartCoroutine(ShootParticle(timeBetweenAttacks));
-            }
-        }
-    }
+    //        if (transform.localScale == new Vector3(maxSizeX, maxSizeY, 1f))
+    //        {
+    //            grow = false;
+    //            StartCoroutine(ShootParticle(timeBetweenAttacks));
+    //        }
+    //    }
+    //}
 
     IEnumerator ShootParticle(float timeBetweenAttacks)
     {
@@ -168,7 +183,7 @@ public class Enemy : MonoBehaviour
         ScoreManager.AddToScore(points);
         elementalDeath.Play();
         sortElemental();
-        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().increaseDifficulty();
+        enemySpawner.increaseDifficulty();
         Destroy(gameObject);
         GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
         Destroy(deathVFX, durationOfVFX);
@@ -188,22 +203,22 @@ public class Enemy : MonoBehaviour
     {
         if (this.name == "Earth Enemy(Clone)")
         {
-            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el1.RemoveAt(0);
+            enemySpawner.el1.RemoveAt(0);
         }
 
-        if (this.name == "Fire Enemy(Clone)")
+        else if (this.name == "Fire Enemy(Clone)")
         {
-            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el2.RemoveAt(0);
+            enemySpawner.el2.RemoveAt(0);
         }
 
-        if (this.name == "Ice Enemy(Clone)")
+        else if (this.name == "Ice Enemy(Clone)")
         {
-            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el3.RemoveAt(0);
+            enemySpawner.el3.RemoveAt(0);
         }
 
-        if (this.name == "Water Enemy(Clone)")
+        else if (this.name == "Water Enemy(Clone)")
         {
-            GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().el4.RemoveAt(0);
+            enemySpawner.el4.RemoveAt(0);
         }
     }
 }

@@ -496,18 +496,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 233808428}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &253112085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 8bd71b64705a3334b80f1549f21de0bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 233808428}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &253937286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 9204434af9fbc444083c1e6cbfda964a,
-    type: 3}
-  m_PrefabInstance: {fileID: 785147003}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &292324700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,12 +580,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5306190935036487887, guid: 8bd71b64705a3334b80f1549f21de0bc,
     type: 3}
   m_PrefabInstance: {fileID: 292324700}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &306511584 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 9204434af9fbc444083c1e6cbfda964a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1471995720}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &335393655 stripped
 GameObject:
@@ -812,12 +794,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &680871306 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 8bd71b64705a3334b80f1549f21de0bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 292324700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &775113612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,12 +1086,6 @@ Transform:
   m_Father: {fileID: 679423303}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &834585085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 9204434af9fbc444083c1e6cbfda964a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1381035787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915070161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1381,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 69bd90fdd7ccfae478641c30946b9410, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2600,12 +2570,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1016410841027328745, guid: 1ebd161540285e14e96365580c7b2230,
     type: 3}
   m_PrefabInstance: {fileID: 3204042998123344676}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2039252709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592195435978554282, guid: 8bd71b64705a3334b80f1549f21de0bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2104169308}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2104169308
 PrefabInstance:
@@ -3807,32 +3771,32 @@ PrefabInstance:
         type: 3}
       propertyPath: houses.Array.data[2]
       value: 
-      objectReference: {fileID: 306511584}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: houses.Array.data[3]
       value: 
-      objectReference: {fileID: 834585085}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: houses.Array.data[4]
       value: 
-      objectReference: {fileID: 253112085}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: houses.Array.data[5]
       value: 
-      objectReference: {fileID: 680871306}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: houses.Array.data[6]
       value: 
-      objectReference: {fileID: 2039252709}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: houses.Array.data[7]
       value: 
-      objectReference: {fileID: 253937286}
+      objectReference: {fileID: 0}
     - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
         type: 3}
       propertyPath: timeBetweenSpawns

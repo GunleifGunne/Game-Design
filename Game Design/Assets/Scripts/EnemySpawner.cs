@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 spawnPosition;
     Camera gameCamera;
+    float houseCount;
 
     float xMin, xMax, yMin, yMax, timer;
 
@@ -30,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         SetUpSpawnBoundaries();
-
+        houseCount = GameObject.Find("Houses").transform.childCount;
     }
 
     private void Update()
@@ -42,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
             determineSpawn();
         }
 
-        Debug.Log(maxDifficulty);
+        Debug.Log("Max Difficulty: " + maxDifficulty);
     }
 
     public Vector3 GetSpawnPosition()
@@ -106,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnTime - timer <= 0)
         {
-            if (GameObject.Find("Houses").transform.childCount * 2 >= maxDifficulty)
+            if (houseCount * 2 >= maxDifficulty)
             {
                 SpawnEnemy();
                 timer = 0; 
@@ -120,30 +121,7 @@ public class EnemySpawner : MonoBehaviour
     {
         currentDifficulty = 0;
 
-        for(int i = 0; i < el1.Count; i++)
-        {
-            currentDifficulty++;
-        }
-
-        for(int i = 0; i < el2.Count; i++)
-        {
-            currentDifficulty++;
-        }
-
-        for(int i = 0; i < el3.Count; i++)
-        {
-            currentDifficulty++;
-        }
-
-        for(int i = 0; i < el4.Count; i++)
-        {
-            currentDifficulty++;
-        }
-
-        for(int i = 0; i< el5.Count; i++)
-        {
-            currentDifficulty++;
-        }
+        currentDifficulty += (el1.Count + el2.Count + el3.Count + el4.Count + el5.Count);
 
         return currentDifficulty;
     }
@@ -156,22 +134,22 @@ public class EnemySpawner : MonoBehaviour
             el1.Add(enemyIndex);
         }
 
-        if (enemyIndex == 1)
+        else if (enemyIndex == 1)
         {
             el2.Add(enemyIndex);
         }
 
-        if (enemyIndex == 2)
+        else if (enemyIndex == 2)
         {
             el3.Add(enemyIndex);
         }
 
-        if (enemyIndex == 3)
+        else if (enemyIndex == 3)
         {
             el4.Add(enemyIndex);
         }
 
-        if (enemyIndex == 4)
+        else if (enemyIndex == 4)
         {
             el5.Add(enemyIndex);
         }
@@ -180,12 +158,12 @@ public class EnemySpawner : MonoBehaviour
     //As long as there are spaces, increase the max number of enemies by 1. Otherwise increase their MS and fire rate.
     public void increaseDifficulty()
     {
-        if (GameObject.Find("Houses").transform.childCount * 4 >= maxDifficulty)
+        if (houseCount * 2 >= maxDifficulty)
         { 
             maxDifficulty += difficultyMod;
         }
 
-        if (GameObject.Find("Houses").transform.childCount * 4 < maxDifficulty)
+        if (houseCount * 2 < maxDifficulty)
         { 
             actionSpeed += actionSpeedMod;
         }

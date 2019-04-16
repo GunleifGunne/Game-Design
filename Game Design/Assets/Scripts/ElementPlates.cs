@@ -12,13 +12,15 @@ public class ElementPlates : MonoBehaviour
     {
         current = elementIcon.GetComponent<SpriteRenderer>();
         current.sprite = elementSprites[0];
-        //current.color = Color.black;
+        current.color = Color.black;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         //if (Input.GetKeyDown("space"))
         //{
+        current.color = Color.white;
+
             if (other.gameObject.name == "Fire Element")
             {
                 current.sprite = elementSprites[2];

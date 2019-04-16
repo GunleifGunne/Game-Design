@@ -11,6 +11,8 @@ public class PlayerAnimation : MonoBehaviour
     bool p1Up, p1Down, p1Left, p1Right;
     bool p2Up, p2Down, p2Left, p2Right;
 
+    bool isAnimation = false;
+
     public static bool verticalUpwardsFirePoint
     {
         get
@@ -54,6 +56,30 @@ public class PlayerAnimation : MonoBehaviour
         p1Left = Input.GetKey(KeyCode.A);
         p1Right = Input.GetKey(KeyCode.D);
 
+        //Player 2 movement animation
+        p2Up = Input.GetKey(KeyCode.Keypad8);
+        p2Down = Input.GetKey(KeyCode.Keypad5);
+        p2Left = Input.GetKey(KeyCode.Keypad4);
+        p2Right = Input.GetKey(KeyCode.Keypad6);
+
+        if (p1Up || p1Down || p1Left || p1Right)
+        {
+            player1Animation();
+            isAnimation = false;
+        }
+        if (p2Up || p2Down || p2Left || p2Right)
+        {
+            player2Animation();
+            isAnimation = false;
+        }
+        if (isAnimation == false)
+        {
+            stopAnimation();
+        }
+    }
+
+    private bool player1Animation()
+    {
         if (p1Right && !p1Up && !p1Left && !p1Down)
         {
             p1Animation.Play("Player1Right");
@@ -78,12 +104,10 @@ public class PlayerAnimation : MonoBehaviour
             PlayerAnimation.verticalDownwardsFirePoint = true;
         }
 
-        //Player 2 movement animation
-        p2Up = Input.GetKey(KeyCode.UpArrow);
-        p2Down = Input.GetKey(KeyCode.DownArrow);
-        p2Left = Input.GetKey(KeyCode.LeftArrow);
-        p2Right = Input.GetKey(KeyCode.RightArrow);
+        return isAnimation = true;
+    }
 
+    private bool player2Animation() {
         if (p2Right && !p2Up && !p2Down && !p2Left)
         {
             p2Animation.Play("Player2Right");
@@ -107,6 +131,11 @@ public class PlayerAnimation : MonoBehaviour
             PlayerAnimation.verticalDownwardsFirePoint = true;
         }
 
+        return isAnimation = true;
+    }
+
+    private void stopAnimation()
+    {
         //Stop player animation when there is no movement
         if (!p1Up && !p1Down && !p1Left && !p1Right)
         {
