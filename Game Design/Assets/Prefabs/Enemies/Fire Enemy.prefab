@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62f80eb4ffae4c4f834112f38db9b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 0.3
   icon: {fileID: 8795084857334944023}
   points: 200
   deathVFXPrefab: {fileID: 4966897020155404593, guid: 518e442088fe85e42ac638b3be0eb9d8,
