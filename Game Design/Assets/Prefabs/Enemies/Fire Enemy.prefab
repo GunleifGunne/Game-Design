@@ -101,6 +101,8 @@ MonoBehaviour:
   deathVFXPrefab: {fileID: 4966897020155404593, guid: 518e442088fe85e42ac638b3be0eb9d8,
     type: 3}
   durationOfVFX: 0.6
+  elementalDeath: {fileID: 8300000, guid: 91b0b6202a028324ca2a01ff1649dc00, type: 3}
+  deathVolume: 0.8
   scaleSizeTime: 2
   scaleFactor: 0.3
   projectilePrefab: {fileID: 1973797488871700, guid: 48e06088b7e195f40898a828bd389ec3,

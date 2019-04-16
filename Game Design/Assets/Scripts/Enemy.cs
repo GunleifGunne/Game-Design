@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] int points = 200;
     [SerializeField] GameObject deathVFXPrefab;
     [SerializeField] float durationOfVFX;
+    [SerializeField] AudioClip elementalDeath;
+    [SerializeField] float deathVolume = 1;
 
     [Header("Scale Settings")]
     [SerializeField] float scaleSizeTime = 5;
@@ -40,7 +42,7 @@ public class Enemy : MonoBehaviour
     bool callShootRoutine = true;
     bool flipMe = false;
 
-    AudioSource elementalShoot, elementalDeath;
+    AudioSource elementalShoot;
     BGMusic sounds;
 
     // Start is called before the first frame update
@@ -63,7 +65,6 @@ public class Enemy : MonoBehaviour
         //maxSizeY = originalSize.y + (originalSize.y * scaleFactor * 2);
 
         elementalShoot = sounds.elementalShoot;
-        elementalDeath = sounds.elementalDeath;
     }
 
     // Update is called once per frame
@@ -181,10 +182,10 @@ public class Enemy : MonoBehaviour
     {
         availableTargets.AddToList(targetPositionObject);
         ScoreManager.AddToScore(points);
-        elementalDeath.Play();
         sortElemental();
         enemySpawner.increaseDifficulty();
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(elementalDeath, Camera.main.transform.position, deathVolume);
         GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
         Destroy(deathVFX, durationOfVFX);
     }

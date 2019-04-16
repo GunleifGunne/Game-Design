@@ -8,6 +8,8 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] int points = 200;
     [SerializeField] GameObject deathVFXPrefab;
     [SerializeField] float durationOfVFX;
+    [SerializeField] AudioClip elementalDeath;
+    [SerializeField] float deathVolume = 1;
 
     [Header("Projectile Settings")]
     [SerializeField] GameObject projectilePrefab;
@@ -173,6 +175,7 @@ public class BigEnemy : MonoBehaviour
         ScoreManager.AddToScore(points);
         sortElemental();
         Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(elementalDeath, Camera.main.transform.position, deathVolume);
         GameObject deathVFX = Instantiate(deathVFXPrefab, transform.position, deathVFXPrefab.transform.rotation);
         Destroy(deathVFX, durationOfVFX);
     }
