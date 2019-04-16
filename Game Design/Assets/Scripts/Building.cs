@@ -85,4 +85,10 @@ public class Building : MonoBehaviour
     {
         return currentHealth / health;
     }
+
+     void OnCollisionEnter2D (Collision2D other){
+        if(other.gameObject.name == "Player Projectile Ice(Clone)" || other.gameObject.name == "Player Projectile Fire(Clone)" || other.gameObject.name == "Player Projectile Water(Clone)"|| other.gameObject.name == "Player Projectile Earth(Clone)"){
+        Destroy(other.gameObject);
+        }
+    }
 }

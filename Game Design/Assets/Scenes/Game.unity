@@ -165,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 6828392083188260556, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6620774656613232242, guid: 5746bbf775566fd47ac0a4f00317f5ab,
         type: 3}
@@ -281,6 +281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElementIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
@@ -1194,6 +1199,16 @@ PrefabInstance:
       propertyPath: shake
       value: 
       objectReference: {fileID: 4144580972443295517}
+    - target: {fileID: 3905068094613433359, guid: e17d2c8b12999be4a845db13b30dff3d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3905068094613433359, guid: e17d2c8b12999be4a845db13b30dff3d,
+        type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17d2c8b12999be4a845db13b30dff3d, type: 3}
 --- !u!4 &974289623 stripped
@@ -1302,7 +1317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130235006}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1332,7 +1347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169025372}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379414908}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1622,7 +1637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398127718}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2102,7 +2117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1796556549}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2386,7 +2401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1934851153}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fire Point Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2483,7 +2498,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1968461526
 MonoBehaviour:
@@ -3046,6 +3061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElementIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167942204598217825, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4167942204598217826, guid: 0d1d781a18e62f04f8d02cf6de4412b7,
         type: 3}
@@ -3871,7 +3891,7 @@ PrefabInstance:
     - target: {fileID: 5671197304818461756, guid: e3109cabddb4e634184011447585982e,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6090060205022559896, guid: e3109cabddb4e634184011447585982e,
         type: 3}
