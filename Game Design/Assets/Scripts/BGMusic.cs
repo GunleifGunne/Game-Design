@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGMusic : MonoBehaviour
 {
-    public AudioSource houseDestroyed, heroShoot, elementalShoot, elementalDeath;
+    public AudioSource houseDestroyed, heroShoot, elementalShoot, elementPlate;
     // Start is called before the first frame update
 
     // Update is called once per frame

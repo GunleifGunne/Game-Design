@@ -37,6 +37,8 @@ public class BigEnemy : MonoBehaviour
     ScoreUpdate scoreUpdate;
     AvailableTargets availableTargets;
     EnemySpawner enemySpawner;
+    BGMusic sounds;
+    AudioSource elementalShoot;
 
     Vector3 targetPosition, targetHousePos;
 
@@ -46,6 +48,8 @@ public class BigEnemy : MonoBehaviour
         availableTargets = FindObjectOfType<AvailableTargets>();
         scoreUpdate = FindObjectOfType<ScoreUpdate>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        sounds = GameObject.Find("Sound").GetComponent<BGMusic>();
+        elementalShoot = sounds.elementalShoot;
 
         AssignIcons();
         AssignTarget();
@@ -135,6 +139,7 @@ public class BigEnemy : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenAttacks);
             projectile = Instantiate(projectilePrefab, transform.position, transform.rotation) as GameObject;
             projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeed, 0f);
+            elementalShoot.Play();
         }
     }
 
