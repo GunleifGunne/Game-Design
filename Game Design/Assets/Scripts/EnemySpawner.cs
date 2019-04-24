@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 spawnPosition;
     Camera gameCamera;
-    float houseCount;
+    public float houseCount;
 
     float xMin, xMax, yMin, yMax, timer;
 
@@ -107,7 +107,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnTime - timer <= 0)
         {
-            if (houseCount * 2 >= maxDifficulty)
+            if (houseCount * 2 > currentDifficulty)
             {
                 SpawnEnemy();
                 timer = 0; 

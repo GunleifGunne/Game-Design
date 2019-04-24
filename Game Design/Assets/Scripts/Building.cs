@@ -75,9 +75,10 @@ public class Building : MonoBehaviour
     {
         gameObject.tag = "Destroyed";
         GetComponent<SpriteRenderer>().sprite = destroyedSprite;
+        GameObject.Find("Available Targets").GetComponent<AvailableTargets>().RemoveFromList(gameObject);
         DestroySound.Play();
         LifeManager.ReduceLife();
-
+        GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>().houseCount--;
         isShake = true;
     }
 
