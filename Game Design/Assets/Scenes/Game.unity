@@ -3813,6 +3813,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3629208033951579324, guid: f52a51ffa4d43b544bc56c164ac5ddfc,
         type: 3}
+    - target: {fileID: 890069763342909989, guid: 01cfccaf6aed75a42ac4eb8d5c821e57,
+        type: 3}
+      propertyPath: maxDifficulty
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01cfccaf6aed75a42ac4eb8d5c821e57, type: 3}
 --- !u!1001 &9123785069141824889
